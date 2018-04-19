@@ -19,9 +19,16 @@ public class IngProy {
     
     public static void main(String[] args) {
         //MAIN DEL PROYECTO PARA IMPLEMENTAR LOS MÉTODOS.
-        MainWin test = new MainWin (1000,600,"Test");
-        test.setVisible(true);
-        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      //  MainWin test = new MainWin (1000,600,"Test");
+       // test.setVisible(true);
+       // test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       
+       MainMenu VentanaInicio = new MainMenu();
+        VentanaInicio.setTitle("Ventana Inicial");
+        VentanaInicio.setVisible(true);
+       
+        
+        
     }
     
 }
