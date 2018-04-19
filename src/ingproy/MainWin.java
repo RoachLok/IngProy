@@ -6,19 +6,18 @@
 package ingproy;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
+//import java.awt.FlowLayout;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.*;
 
 /**
  *
  * @author jtabo_000
  */
-public class MainWin extends JFrame implements ActionListener{
+    abstract class MainWin extends JFrame implements ActionListener{
     private final String newLine = "/n";
     
-    public MainWin (int winWidth, int winLength, String title){
+    public MainWin (int winWidth, int winLength, String title, JComponent output, JComponent pastOutput){
         // Sets window's width and length, and spawning location.
         setTitle(title);
         setSize(winWidth, winLength);
@@ -36,9 +35,10 @@ public class MainWin extends JFrame implements ActionListener{
         JPanel outputPanel = new JPanel ();
         outputPanel.setBackground(Color.BLUE);
         
-        JScrollPane outputScoller = new JScrollPane (outputPanel);
-        
-        
+        //Inserts the Scroller on the outputPanel where the outputs of the programs will be desplayed.
+        JScrollPane outputScroller = new JScrollPane (output);
+        outputPanel.add (outputScroller);
+                
         primaryPanel.add (leftPanel);
         primaryPanel.add (outputPanel);
         
@@ -48,13 +48,17 @@ public class MainWin extends JFrame implements ActionListener{
         JPanel explorerPanel = new JPanel ();
         explorerPanel.setBackground(Color.darkGray);
         
+        //Inserts the Scroller on the explorerPanel where the PAST OUTPUTS of the programs will be desplayed.
+        JScrollPane explorerScroller = new JScrollPane (pastOutput);
+        explorerPanel.add (explorerScroller);
+        
         leftPanel.add (inputPanel);
         leftPanel.add (explorerPanel);
         
         add (primaryPanel);
     }
     
-    public MainWin (int winWidth, int winLength, String title, int widthPos, int lengthPos){
+    public MainWin (int winWidth, int winLength, String title, JComponent output, JComponent pastOutput, int widthPos, int lengthPos){
         // Sets window's width and length, and spawning location.
         setTitle(title);
         setSize(winWidth, winLength);
@@ -72,14 +76,22 @@ public class MainWin extends JFrame implements ActionListener{
         JPanel outputPanel = new JPanel ();
         outputPanel.setBackground(Color.BLUE);
         
+        //Inserts the Scroller on the outputPanel where the outputs of the programs will be desplayed.
+        JScrollPane outputScroller = new JScrollPane (output);
+        outputPanel.add (outputScroller);
+        
         primaryPanel.add (leftPanel);
         primaryPanel.add (outputPanel);
         
-        // Inserts to the Left JPanel an upper and a lower JPannels
+        // Inserts to the Left JPanel an upper and a lower JPanels
         JPanel inputPanel = new JPanel ();
         inputPanel.setBackground(Color.YELLOW);
         JPanel explorerPanel = new JPanel ();
         explorerPanel.setBackground(Color.darkGray);
+        
+        //Inserts the Scroller on the explorerPanel where the PAST OUTPUTS of the programs will be desplayed.
+        JScrollPane explorerScroller = new JScrollPane (pastOutput);
+        explorerPanel.add (explorerScroller);
         
         leftPanel.add (inputPanel);
         leftPanel.add (explorerPanel);
