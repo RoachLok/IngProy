@@ -31,6 +31,7 @@ class VentanaInicio extends JFrame{
         
         Footer foo = new Footer();
         add(foo, BorderLayout.SOUTH);
+        //System.out
         
     }
      class PanelPrincipal extends JPanel implements ActionListener{
