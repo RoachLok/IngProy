@@ -5,7 +5,7 @@
  */
 package ingproy;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  *
@@ -19,16 +19,17 @@ public class IngProy {
     
     public static void main(String[] args) {
         //MAIN DEL PROYECTO PARA IMPLEMENTAR LOS MÉTODOS.
-      //  MainWin test = new MainWin (1000,600,"Test");
-       // test.setVisible(true);
-       // test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       
-       MainMenu VentanaInicio = new MainMenu();
-        VentanaInicio.setTitle("Ventana Inicial");
-        VentanaInicio.setVisible(true);
-       
+        /*
+        JPanel testComponent = new JPanel ();
+        EqSolver test = new EqSolver (500,300,"Test",testComponent,testComponent);
+        test.setVisible(true);
+        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        */
         
-        
+        MainMenu VentanaInicio = new MainMenu();
+        VentanaInicio.setTitle ("Ventana Inicial");
+        VentanaInicio.setVisible (true);
+        VentanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
 }

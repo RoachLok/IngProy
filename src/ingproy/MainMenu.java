@@ -51,10 +51,10 @@ class MainMenu extends JFrame{
        boton2.addActionListener(this);
        boton3.addActionListener(this);
    }
-
+        JPanel testComponent = new JPanel ();
         @Override
         public void actionPerformed(ActionEvent e) {
-           MainWin test = new MainWin (1000,600,"Test");
+           EqSolver test = new EqSolver (1000, 600, "EqSolver", testComponent, testComponent);
         test.setVisible(true);
          }
          }

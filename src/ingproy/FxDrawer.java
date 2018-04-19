@@ -11,16 +11,14 @@ import javax.swing.JComponent;
  *
  * @author jtabo_000
  */
-public class EqSolver extends MainWin   {
-
-    public EqSolver(int winWidth, int winLength, String title, JComponent output, JComponent pastOutput) {
+public class FxDrawer extends MainWin{
+    
+    public FxDrawer(int winWidth, int winLength, String title, JComponent output, JComponent pastOutput) {
         super(winWidth, winLength, title, output, pastOutput);
     }
     
-    public EqSolver(int winWidth, int winLength, String title, JComponent output, JComponent pastOutput, int widthPos, int lengthPos) {
+    public FxDrawer(int winWidth, int winLength, String title, JComponent output, JComponent pastOutput, int widthPos, int lengthPos) {
         super(winWidth, winLength, title, output, pastOutput, widthPos, lengthPos);
     }
-    
-    
     
 }
