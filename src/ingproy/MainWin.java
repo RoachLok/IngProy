@@ -36,6 +36,9 @@ public class MainWin extends JFrame implements ActionListener{
         JPanel outputPanel = new JPanel ();
         outputPanel.setBackground(Color.BLUE);
         
+        JScrollPane outputScoller = new JScrollPane (outputPanel);
+        
+        
         primaryPanel.add (leftPanel);
         primaryPanel.add (outputPanel);
         
