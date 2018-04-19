@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 
 /**
@@ -47,30 +48,32 @@ class MainMenu extends JFrame{
        add(boton2,BorderLayout.CENTER);
        add(boton3,BorderLayout.EAST);
        boton1.addActionListener(this);
+       boton2.addActionListener(this);
+       boton3.addActionListener(this);
    }
 
         @Override
         public void actionPerformed(ActionEvent e) {
+           MainWin test = new MainWin (1000,600,"Test");
+        test.setVisible(true);
          }
          }
      
      public class Footer extends JPanel implements ActionListener{
 
-         JButton exit = new JButton("Exit"); 
+         JButton botonExit = new JButton("Exit"); 
          public Footer(){
            
-            add(exit,BorderLayout.LINE_END);  
+            add(botonExit,BorderLayout.LINE_END);  
+            botonExit.addActionListener(this);
             
-            
-          
-            
-            
-           
          }
          
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        //    hacer metodo para que cuando pulses el botonExit
+         //           el programa pare
         }
          
         
