@@ -17,8 +17,8 @@ import javax.swing.JPanel;
  *
  * @author antoniocalvocalvo
  */
-class VentanaInicio extends JFrame{
-    public VentanaInicio(){
+class MainMenu extends JFrame{
+    public MainMenu(){
       
         
    
