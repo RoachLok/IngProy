@@ -50,6 +50,41 @@ public class MainWin extends JFrame implements ActionListener{
         
         add (primaryPanel);
     }
+    
+    public MainWin (int winWidth, int winLength, String title, int widthPos, int lengthPos){
+        // Sets window's width and length, and spawning location.
+        setTitle(title);
+        setSize(winWidth, winLength);
+        setLocation(widthPos,lengthPos);
+        
+        // Generates main JPanel
+        JPanel primaryPanel = new JPanel ();
+        primaryPanel.setLayout(new BoxLayout (primaryPanel, BoxLayout.X_AXIS));
+        primaryPanel.setBackground(Color.RED);
+        
+        // Inserts on the main JPanel two JPanels, one on the left and one on the right.
+        JPanel leftPanel = new JPanel ();
+        leftPanel.setLayout (new BoxLayout (leftPanel, BoxLayout.Y_AXIS));
+        leftPanel.setBackground(Color.BLACK);
+        JPanel outputPanel = new JPanel ();
+        outputPanel.setBackground(Color.BLUE);
+        
+        primaryPanel.add (leftPanel);
+        primaryPanel.add (outputPanel);
+        
+        // Inserts to the Left JPanel an upper and a lower JPannels
+        JPanel inputPanel = new JPanel ();
+        inputPanel.setBackground(Color.YELLOW);
+        JPanel explorerPanel = new JPanel ();
+        explorerPanel.setBackground(Color.darkGray);
+        
+        leftPanel.add (inputPanel);
+        leftPanel.add (explorerPanel);
+        
+        add (primaryPanel);
+    }
+    
+    
         
     
     
