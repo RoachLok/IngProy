@@ -11,15 +11,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 
 /**
  *
  * @author antoniocalvocalvo
  */
-class MainMenu extends JFrame{
-    public MainMenu(){
+class VentanaInicio extends JFrame{
+    public VentanaInicio(){
       
         
    
@@ -48,38 +47,34 @@ class MainMenu extends JFrame{
        add(boton2,BorderLayout.CENTER);
        add(boton3,BorderLayout.EAST);
        boton1.addActionListener(this);
-       boton2.addActionListener(this);
-       boton3.addActionListener(this);
    }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-           MainWin test = new MainWin (1000,600,"Test");
-        test.setVisible(true);
          }
          }
      
      public class Footer extends JPanel implements ActionListener{
 
-         JButton botonExit = new JButton("Exit"); 
+         JButton exit = new JButton("Exit"); 
          public Footer(){
            
-            add(botonExit,BorderLayout.LINE_END);  
-            botonExit.addActionListener(this);
-             
+            add(exit,BorderLayout.LINE_END);  
             
+            
+          
+            
+            
+           
          }
          
-        @Override //This method stops the program when clicked on the exit button
+        @Override
         public void actionPerformed(ActionEvent e) {
-        
-           System.exit(0);
-       
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
          
         
-        
-       
+
          
      }
      }
