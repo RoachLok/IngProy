@@ -66,18 +66,20 @@ class MainMenu extends JFrame{
            
             add(botonExit,BorderLayout.LINE_END);  
             botonExit.addActionListener(this);
+             
             
          }
          
-        @Override
+        @Override //This method stops the program when clicked on the exit button
         public void actionPerformed(ActionEvent e) {
         
-        //    hacer metodo para que cuando pulses el botonExit
-         //           el programa pare
+           System.exit(0);
+       
         }
          
         
-
+        
+       
          
      }
      }
