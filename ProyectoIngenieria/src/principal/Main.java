@@ -21,8 +21,9 @@ public class Main {
         Ventana0.setVisible(true);// para que se muestre la ventana
         
         Ventana0.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// si cierro la venta el programa cierra
+        //esto es una prueba
         }
-    
+   
      }
     
 
