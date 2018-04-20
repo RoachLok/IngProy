@@ -41,7 +41,7 @@ import java.awt.*;
         //Sets a splitter between leftPanel and outputScroller by adding them to a JSplitPanel.
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, outputScroller);
         splitPane.setOneTouchExpandable(true);
-        splitPane.setDividerLocation(140);
+        splitPane.setDividerLocation(300);
         splitPane.setResizeWeight(0.30);
 
         //Provide minimum sizes for the two components in the split pane.
