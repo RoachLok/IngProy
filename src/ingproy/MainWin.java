@@ -9,6 +9,7 @@ import java.awt.Color;
 //import java.awt.FlowLayout;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -28,34 +29,45 @@ import javax.swing.*;
         primaryPanel.setLayout(new BoxLayout (primaryPanel, BoxLayout.X_AXIS));
         primaryPanel.setBackground(Color.RED);
         
-        // Inserts on the main JPanel two JPanels, one on the left and one on the right.
+        // Inserts on the main JPanel two Panels, one JPanel on the left and one JScrollerPane on the right.
         JPanel leftPanel = new JPanel ();
         leftPanel.setLayout (new BoxLayout (leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.setBackground(Color.BLACK);
-        JPanel outputPanel = new JPanel ();
-        outputPanel.setBackground(Color.BLUE);
-        
-        //Inserts the Scroller on the outputPanel where the outputs of the programs will be desplayed.
+        leftPanel.setBackground(Color.MAGENTA);
         JScrollPane outputScroller = new JScrollPane (output);
-        outputPanel.add (outputScroller);
-                
-        primaryPanel.add (leftPanel);
-        primaryPanel.add (outputPanel);
         
-        // Inserts to the Left JPanel an upper and a lower JPannels
+        outputScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        outputScroller.setBackground(Color.RED);
+        
+        //Sets a splitter between leftPanel and outputScroller by adding them to a JSplitPanel.
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, outputScroller);
+        splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(140);
+        splitPane.setResizeWeight(0.30);
+
+        //Provide minimum sizes for the two components in the split pane.
+        Dimension minimumSize = new Dimension(100, 50);
+        leftPanel.setMinimumSize(minimumSize);
+        outputScroller.setMinimumSize(minimumSize);
+        
+        //Adds the splitPane to the primaryPanel
+        primaryPanel.add(splitPane);
+        
+        //Inserts to the Left JPanel an upper JPanel and a lower JScrollerPane.
         JPanel inputPanel = new JPanel ();
         inputPanel.setBackground(Color.YELLOW);
-        JPanel explorerPanel = new JPanel ();
-        explorerPanel.setBackground(Color.darkGray);
+        JScrollPane explorerScrollPane = new JScrollPane(pastOutput);
+        explorerScrollPane.setBackground(Color.darkGray);
         
-        //Inserts the Scroller on the explorerPanel where the PAST OUTPUTS of the programs will be desplayed.
-        JScrollPane explorerScroller = new JScrollPane (pastOutput);
-        explorerPanel.add (explorerScroller);
+        //Sets a splitter between inputPanel and explorerScrollPane.
+        JSplitPane splitPane2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, inputPanel, explorerScrollPane);
+        splitPane2.setOneTouchExpandable(true);
+        splitPane2.setResizeWeight (0.5);
         
-        leftPanel.add (inputPanel);
-        leftPanel.add (explorerPanel);
+        //Adds the JSplitPane to the left JPanel
+        leftPanel.add(splitPane2);
         
         add (primaryPanel);
+        
     }
     
     public MainWin (int winWidth, int winLength, String title, JComponent output, JComponent pastOutput, int widthPos, int lengthPos){
@@ -69,34 +81,45 @@ import javax.swing.*;
         primaryPanel.setLayout(new BoxLayout (primaryPanel, BoxLayout.X_AXIS));
         primaryPanel.setBackground(Color.RED);
         
-        // Inserts on the main JPanel two JPanels, one on the left and one on the right.
+        // Inserts on the main JPanel two Panels, one JPanel on the left and one JScrollerPane on the right.
         JPanel leftPanel = new JPanel ();
         leftPanel.setLayout (new BoxLayout (leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.setBackground(Color.BLACK);
-        JPanel outputPanel = new JPanel ();
-        outputPanel.setBackground(Color.BLUE);
-        
-        //Inserts the Scroller on the outputPanel where the outputs of the programs will be desplayed.
+        leftPanel.setBackground(Color.MAGENTA);
         JScrollPane outputScroller = new JScrollPane (output);
-        outputPanel.add (outputScroller);
         
-        primaryPanel.add (leftPanel);
-        primaryPanel.add (outputPanel);
+        outputScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        outputScroller.setBackground(Color.RED);
         
-        // Inserts to the Left JPanel an upper and a lower JPanels
+        //Sets a splitter between leftPanel and outputScroller by adding them to a JSplitPanel.
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, outputScroller);
+        splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(140);
+        splitPane.setResizeWeight(0.30);
+
+        //Provide minimum sizes for the two components in the split pane.
+        Dimension minimumSize = new Dimension(100, 50);
+        leftPanel.setMinimumSize(minimumSize);
+        outputScroller.setMinimumSize(minimumSize);
+        
+        //Adds the splitPane to the primaryPanel
+        primaryPanel.add(splitPane);
+        
+        //Inserts to the Left JPanel an upper JPanel and a lower JScrollerPane.
         JPanel inputPanel = new JPanel ();
         inputPanel.setBackground(Color.YELLOW);
-        JPanel explorerPanel = new JPanel ();
-        explorerPanel.setBackground(Color.darkGray);
+        JScrollPane explorerScrollPane = new JScrollPane(pastOutput);
+        explorerScrollPane.setBackground(Color.darkGray);
         
-        //Inserts the Scroller on the explorerPanel where the PAST OUTPUTS of the programs will be desplayed.
-        JScrollPane explorerScroller = new JScrollPane (pastOutput);
-        explorerPanel.add (explorerScroller);
+        //Sets a splitter between inputPanel and explorerScrollPane.
+        JSplitPane splitPane2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, inputPanel, explorerScrollPane);
+        splitPane2.setOneTouchExpandable(true);
+        splitPane2.setResizeWeight (0.5);
         
-        leftPanel.add (inputPanel);
-        leftPanel.add (explorerPanel);
+        //Adds the JSplitPane to the left JPanel
+        leftPanel.add(splitPane2);
         
         add (primaryPanel);
+        
     }
     
     

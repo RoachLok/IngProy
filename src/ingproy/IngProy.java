@@ -7,15 +7,9 @@ package ingproy;
 
 import javax.swing.*;
 
-/**
- *
- * @author jtabo_000
- */
+
 public class IngProy {
 
-    /**
-     * @param args the command line arguments
-     */
     
     public static void main(String[] args) {
         //MAIN DEL PROYECTO PARA IMPLEMENTAR LOS MÉTODOS.
