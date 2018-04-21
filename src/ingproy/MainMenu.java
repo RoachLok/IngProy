@@ -54,7 +54,7 @@ class MainMenu extends JFrame{
         JPanel testComponent = new JPanel ();
         @Override
         public void actionPerformed(ActionEvent e) {
-           EqSolver test = new EqSolver (1000, 600, "EqSolver", testComponent, testComponent);
+           EqSolver test = new EqSolver (1000, 600, "EqSolver", testComponent, testComponent, testComponent);
         test.setVisible(true);
          }
          }

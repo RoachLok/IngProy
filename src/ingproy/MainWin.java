@@ -18,7 +18,7 @@ import java.awt.*;
     abstract class MainWin extends JFrame implements ActionListener{
     private final String newLine = "/n";
     
-    public MainWin (int winWidth, int winLength, String title, JComponent output, JComponent pastOutput){
+    public MainWin (int winWidth, int winLength, String title, JComponent input, JComponent output, JComponent pastOutput){
         // Sets window's width and length, and spawning location.
         setTitle(title);
         setSize(winWidth, winLength);
@@ -63,6 +63,9 @@ import java.awt.*;
         splitPane2.setOneTouchExpandable(true);
         splitPane2.setResizeWeight (0.5);
         
+        //Allows to insert a JComponent inside inputPanel.
+        inputPanel.add(input);
+        
         //Adds the JSplitPane to the left JPanel
         leftPanel.add(splitPane2);
         
@@ -70,7 +73,7 @@ import java.awt.*;
         
     }
     
-    public MainWin (int winWidth, int winLength, String title, JComponent output, JComponent pastOutput, int widthPos, int lengthPos){
+    public MainWin (int winWidth, int winLength, String title, JComponent input, JComponent output, JComponent pastOutput, int widthPos, int lengthPos){
         // Sets window's width and length, and spawning location.
         setTitle(title);
         setSize(winWidth, winLength);
@@ -115,6 +118,9 @@ import java.awt.*;
         splitPane2.setOneTouchExpandable(true);
         splitPane2.setResizeWeight (0.5);
         
+        //Allows to insert a JComponent inside inputPanel.
+        inputPanel.add(input);
+        
         //Adds the JSplitPane to the left JPanel
         leftPanel.add(splitPane2);
         
@@ -123,12 +129,11 @@ import java.awt.*;
     }
     
     
-        
-    
-    
-    
-    
-    
+    //Abstract methods that all windows should have. Further documentation will be added.
+  
+    abstract JComponent input ();
+    abstract JComponent output ();
+    abstract JComponent pastOutput ();
     
     
     
