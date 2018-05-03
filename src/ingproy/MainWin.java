@@ -18,11 +18,13 @@ import java.awt.*;
     abstract class MainWin extends JFrame implements ActionListener{
     private final String newLine = "/n";
     
-    public MainWin (int winWidth, int winLength, String title, JComponent input, JComponent output, JComponent pastOutput){
+    public MainWin (int winWidth, int winLength, String title){
         // Sets window's width and length, and spawning location.
+        
+        
         setTitle(title);
         setSize(winWidth, winLength);
-        setLocation(500,300);
+        setLocationRelativeTo(null);
         
         // Generates main JPanel
         JPanel primaryPanel = new JPanel ();
@@ -33,7 +35,7 @@ import java.awt.*;
         JPanel leftPanel = new JPanel ();
         leftPanel.setLayout (new BoxLayout (leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setBackground(Color.MAGENTA);
-        JScrollPane outputScroller = new JScrollPane (output);
+        JScrollPane outputScroller = new JScrollPane (output());
         
         outputScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         outputScroller.setBackground(Color.RED);
@@ -54,8 +56,10 @@ import java.awt.*;
         
         //Inserts to the Left JPanel an upper JPanel and a lower JScrollerPane.
         JPanel inputPanel = new JPanel ();
+        inputPanel.setLayout(new GridLayout());
         inputPanel.setBackground(Color.YELLOW);
-        JScrollPane explorerScrollPane = new JScrollPane(pastOutput);
+        
+        JScrollPane explorerScrollPane = new JScrollPane(pastOutput());
         explorerScrollPane.setBackground(Color.darkGray);
         
         //Sets a splitter between inputPanel and explorerScrollPane.
@@ -64,7 +68,7 @@ import java.awt.*;
         splitPane2.setResizeWeight (0.5);
         
         //Allows to insert a JComponent inside inputPanel.
-        inputPanel.add(input);
+        inputPanel.add(input());
         
         //Adds the JSplitPane to the left JPanel
         leftPanel.add(splitPane2);
@@ -73,7 +77,7 @@ import java.awt.*;
         
     }
     
-    public MainWin (int winWidth, int winLength, String title, JComponent input, JComponent output, JComponent pastOutput, int widthPos, int lengthPos){
+    public MainWin (int winWidth, int winLength, String title, int widthPos, int lengthPos){
         // Sets window's width and length, and spawning location.
         setTitle(title);
         setSize(winWidth, winLength);
@@ -88,7 +92,7 @@ import java.awt.*;
         JPanel leftPanel = new JPanel ();
         leftPanel.setLayout (new BoxLayout (leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setBackground(Color.MAGENTA);
-        JScrollPane outputScroller = new JScrollPane (output);
+        JScrollPane outputScroller = new JScrollPane (output());
         
         outputScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         outputScroller.setBackground(Color.RED);
@@ -109,8 +113,13 @@ import java.awt.*;
         
         //Inserts to the Left JPanel an upper JPanel and a lower JScrollerPane.
         JPanel inputPanel = new JPanel ();
+        inputPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        
         inputPanel.setBackground(Color.YELLOW);
-        JScrollPane explorerScrollPane = new JScrollPane(pastOutput);
+        JScrollPane explorerScrollPane = new JScrollPane(pastOutput());
         explorerScrollPane.setBackground(Color.darkGray);
         
         //Sets a splitter between inputPanel and explorerScrollPane.
@@ -119,7 +128,7 @@ import java.awt.*;
         splitPane2.setResizeWeight (0.5);
         
         //Allows to insert a JComponent inside inputPanel.
-        inputPanel.add(input);
+        inputPanel.add(input(), gbc);
         
         //Adds the JSplitPane to the left JPanel
         leftPanel.add(splitPane2);
@@ -132,9 +141,13 @@ import java.awt.*;
     //Abstract methods that all windows should have. Further documentation will be added.
   
     abstract JComponent input ();
-    abstract JComponent output ();
-    abstract JComponent pastOutput ();
+    // Top-Left Panel.
     
+    abstract JComponent output ();
+    // Right Panel.
+    
+    abstract JComponent pastOutput ();
+    // Bottom-Left Panel.
     
     
     

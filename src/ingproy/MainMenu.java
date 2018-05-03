@@ -5,7 +5,7 @@
  */
 package ingproy;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -41,7 +41,7 @@ class MainMenu extends JFrame{
        JButton boton2 = new JButton("Ecuaciones Cónicas");
        JButton boton3 = new JButton("Crecimiento Población");
 
-   public PanelPrincipal(){
+    public PanelPrincipal(){
        
       
        add(boton1,BorderLayout.WEST);
@@ -51,15 +51,17 @@ class MainMenu extends JFrame{
        boton2.addActionListener(this);
        boton3.addActionListener(this);
    }
-        JPanel testComponent = new JPanel ();
+
+        EqSolver test1 = new EqSolver (1000, 600, "EqSolver");
+        
         @Override
         public void actionPerformed(ActionEvent e) {
-           EqSolver test = new EqSolver (1000, 600, "EqSolver", testComponent, testComponent, testComponent);
+            EqSolver test = new EqSolver (1000, 600, "EqSolver");
         test.setVisible(true);
          }
          }
      
-     public class Footer extends JPanel implements ActionListener{
+        public class Footer extends JPanel implements ActionListener{
 
          JButton botonExit = new JButton("Exit"); 
          public Footer(){
@@ -81,6 +83,6 @@ class MainMenu extends JFrame{
         
        
          
-     }
-     }
+        }
+        }
 

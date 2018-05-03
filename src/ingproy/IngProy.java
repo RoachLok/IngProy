@@ -13,6 +13,7 @@ public class IngProy {
     
     public static void main(String[] args) {
         //MAIN DEL PROYECTO PARA IMPLEMENTAR LOS MÉTODOS.
+        
         /*
         JPanel testComponent = new JPanel ();
         EqSolver test = new EqSolver (500,300,"Test",testComponent,testComponent);
@@ -20,10 +21,20 @@ public class IngProy {
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         */
         
+        /*
         MainMenu VentanaInicio = new MainMenu();
         VentanaInicio.setTitle ("Ventana Inicial");
         VentanaInicio.setVisible (true);
         VentanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        */
+        
+        FxDrawer test = new FxDrawer (1000, 600, "FxDrawer-Input");
+        test.setVisible(true);
+        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       
+        JFrame testWin = new JFrame ();
+        testWin.add(test.input());
+        testWin.setVisible(true);
     }
     
 }

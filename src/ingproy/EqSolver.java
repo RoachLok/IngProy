@@ -13,12 +13,12 @@ import javax.swing.JComponent;
  */
 public class EqSolver extends MainWin   {
 
-    public EqSolver(int winWidth, int winLength, String title, JComponent input, JComponent output, JComponent pastOutput) {
-        super(winWidth, winLength, title, input, output, pastOutput);
+    public EqSolver(int winWidth, int winLength, String title) {
+        super(winWidth, winLength, title);
     }
     
-    public EqSolver(int winWidth, int winLength, String title, JComponent input, JComponent output, JComponent pastOutput, int widthPos, int lengthPos) {
-        super(winWidth, winLength, title, input, output, pastOutput, widthPos, lengthPos);
+    public EqSolver(int winWidth, int winLength, String title, int widthPos, int lengthPos) {
+        super(winWidth, winLength, title, widthPos, lengthPos);
     }
 
     @Override
