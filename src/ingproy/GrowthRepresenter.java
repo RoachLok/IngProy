@@ -5,7 +5,7 @@
  */
 package ingproy;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 
 /**
  *
@@ -32,19 +32,24 @@ public class GrowthRepresenter extends MainWin{
     
     */
 
+    JPanel test = new JPanel ();
+    
     @Override
     JComponent input() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        return test;
     }
 
     @Override
     JComponent output() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        return test;
     }
 
     @Override
     JComponent pastOutput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        return test;
     }
     
     

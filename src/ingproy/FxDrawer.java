@@ -60,15 +60,19 @@ public class FxDrawer extends MainWin{
         
         return paletPanel;
     }   
-
+    
+    JPanel test = new JPanel ();
+    
     @Override
     JComponent output() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        return test;
     }
 
     @Override
     JComponent pastOutput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        return test;
     }
     
 }
