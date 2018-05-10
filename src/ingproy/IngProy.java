@@ -5,7 +5,9 @@
  */
 package ingproy;
 
+import java.awt.Font;
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 
 
 public class IngProy {
@@ -28,7 +30,7 @@ public class IngProy {
         VentanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         */
         
-        FxDrawer test = new FxDrawer (1000, 600, "FxDrawer-Input");
+        FxDrawer test = new FxDrawer (750, 450, "FxDrawer-Input");
         test.setVisible(true);
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
