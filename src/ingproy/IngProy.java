@@ -23,14 +23,14 @@ public class IngProy {
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         */
         
-        /*
+        
         MainMenu VentanaInicio = new MainMenu();
         VentanaInicio.setTitle ("Ventana Inicial");
         VentanaInicio.setVisible (true);
         VentanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        */
         
-        FxDrawer test = new FxDrawer (750, 450, "FxDrawer-Input");
+        
+        GrowthRepresenter test = new GrowthRepresenter(750, 450, "FxDrawer-Input");
         test.setVisible(true);
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
