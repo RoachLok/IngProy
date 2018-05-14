@@ -5,7 +5,7 @@
  */
 package ingproy;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 
 /**
  *
@@ -20,20 +20,33 @@ public class EqSolver extends MainWin   {
     public EqSolver(int winWidth, int winLength, String title, int widthPos, int lengthPos) {
         super(winWidth, winLength, title, widthPos, lengthPos);
     }
-
+    
+    
     @Override
     JComponent input() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JPanel paletPane = new JPanel ();
+        
+        //ALL input WINDOW CODE HERE
+        
+        return paletPane;
     }
 
     @Override
     JComponent output() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JPanel paletPane = new JPanel ();
+        
+        //ALL output WINDOW CODE HERE
+        
+        return paletPane;
     }
 
     @Override
     JComponent pastOutput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JPanel paletPane = new JPanel ();
+        
+        //ALL pastOutput WINDOW CODE HERE
+        
+        return paletPane;
     }
     
     
