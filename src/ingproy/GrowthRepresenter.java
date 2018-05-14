@@ -98,7 +98,8 @@ public class GrowthRepresenter extends MainWin{
       
   @Override
     JComponent output() {
-        
+     //   poblacion * tasaNatalidad lo imprimes
+                
         
         
         
@@ -115,7 +116,13 @@ public class GrowthRepresenter extends MainWin{
 
        // poblacion final = (inicial * natalidad);
       //  *genraciones maximo de limite poblacion;
-        
+      /* poblacion = (poblacion * tasaNatalidad * (k - poblacion)) / k;
+            if (poblacion <= 0) {
+                extincion = i + 1;
+                series.add(i + 1, 0);
+                break;
+            }
+        */
         
         return test;
     }
