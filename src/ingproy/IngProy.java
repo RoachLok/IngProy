@@ -14,7 +14,7 @@ public class IngProy {
 
     
     public static void main(String[] args) {
-        //MAIN DEL PROYECTO PARA IMPLEMENTAR LOS MÉTODOS.
+        //MAIN DEL PROYECTO PARA LLAMAR A LOS MÉTODOS.
         
         /*
         JPanel testComponent = new JPanel ();
@@ -23,20 +23,21 @@ public class IngProy {
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         */
         
+        MainMenu VentanaPrincipal = new MainMenu();
+        VentanaPrincipal.setTitle ("Menú Principal");
+        VentanaPrincipal.setVisible (true);
+        VentanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        MainMenu VentanaInicio = new MainMenu();
-        VentanaInicio.setTitle ("Ventana Inicial");
-        VentanaInicio.setVisible (true);
-        VentanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-        GrowthRepresenter test = new GrowthRepresenter(750, 450, "FxDrawer-Input");
+        /*
+        FxDrawer test = new FxDrawer(750, 450, "FxDrawer-Input");
         test.setVisible(true);
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
         JFrame testWin = new JFrame ();
         testWin.add(test.input());
         testWin.setVisible(true);
+        */
+        
     }
     
 }
