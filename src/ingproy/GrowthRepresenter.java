@@ -5,9 +5,12 @@
  */
 package ingproy;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import javafx.geometry.Pos;
+import javafx.scene.layout.TilePane;
 import javax.swing.*;
 
 /**
@@ -43,55 +46,54 @@ public class GrowthRepresenter extends MainWin{
         //Eq. input field.
         JPanel inputSection = new JPanel ();
         inputSection.setLayout(new FlowLayout(3));
+         
+        JTextField limiteTexField =       new JTextField ("", 9); //aqui esta la chicha
+        JTextField inicialTexField =      new JTextField ("", 9);
+        JTextField natalidadTexField =    new JTextField ("", 9);
+        JTextField generacionesTexField = new JTextField ("", 9);
         
-        JTextField inputText = new JTextField ("10000", 10); //aqui 
-        JTextField inputText2 = new JTextField ("3", 10);
-        JTextField inputTex3 = new JTextField ("10", 10);
-        JTextField inputTex4 = new JTextField ("40", 10);
-        Dimension minimumSize = new Dimension(100, 50);
-        inputText.setMinimumSize(minimumSize);
-        JLabel limite = new JLabel ("Limite popablación (k): ");
+        JButton continuar = new JButton("Continuar");
+         paletPanel.add(continuar,BorderLayout.WEST);
+         continuar.addActionListener(this);
+         continuar.setActionCommand("Continua");
+         continuar.setVisible(true);
+         Dimension minimumSize = new Dimension(100, 50);
+         continuar.setBackground(Color.YELLOW);
+        
+        limiteTexField.setMinimumSize(minimumSize);//tamaño minimo para no espachurrar
+     
+        JLabel limite = new JLabel ("Limite popablación (k)");
         JLabel inicial = new JLabel (" Población Inicial ");
         JLabel natalidad = new JLabel ("Tasa natalidad ");
         JLabel generaciones = new JLabel ("Generaciones");
         
-        limite.setLabelFor(inputText);
+        
+        limiteTexField.setMinimumSize(minimumSize);
+        
+        limite.setLabelFor(limiteTexField);
         inputSection.add(limite);
-        inputSection.add(inputText);
+        inputSection.add(limiteTexField);
         
-        inicial.setLabelFor(inputText);
+        inicial.setLabelFor(inicialTexField);
         inputSection.add(inicial);
-        inputSection.add(inputText);
+        inputSection.add(inicialTexField);
        
-        natalidad.setLabelFor(inputText);
+        natalidad.setLabelFor(natalidadTexField);
         inputSection.add(natalidad);
-        inputSection.add(inputText);
+        inputSection.add(natalidadTexField);
         
-        generaciones.setLabelFor(inputText);
+        generaciones.setLabelFor(generacionesTexField);
         inputSection.add(generaciones);
-        inputSection.add(inputText);
+        inputSection.add(generacionesTexField);
         
         // HACER UN ARRAY QUE CONTENGA A LOS COMPONENTES Y LES PONGA EL COLOR.
-        inputSection.setBackground(Color.WHITE);
-        inputText.setBackground(Color.GRAY);
-        limite.setBackground(Color.WHITE);
         
-        inputSection.setBackground(Color.WHITE);
-        inputText.setBackground(Color.GRAY);
-        inicial.setBackground(Color.WHITE);
-        
-        inputSection.setBackground(Color.WHITE);
-        inputText.setBackground(Color.GRAY);
-        natalidad.setBackground(Color.WHITE);
-        
-        inputSection.setBackground(Color.WHITE);
-        inputText.setBackground(Color.GRAY);
-        generaciones.setBackground(Color.WHITE);
         
         
         //Adds it to the paletPanel.
         paletPanel.add(blankSpace);
         paletPanel.add(inputSection);
+     //   paletPanel.add(inputTex3);
         
         return paletPanel;
     }   
@@ -100,7 +102,7 @@ public class GrowthRepresenter extends MainWin{
     JComponent output() {
      //   poblacion * tasaNatalidad lo imprimes
                 
-        
+          
         
         
         return test;
@@ -131,3 +133,19 @@ public class GrowthRepresenter extends MainWin{
     
     
 }
+/*
+inputSection.setBackground(Color.WHITE);
+        limiteTexField.setBackground(Color.GRAY);
+        limite.setBackground(Color.BLUE);
+        
+        inputSection.setBackground(Color.WHITE);
+        limiteTexField.setBackground(Color.GREEN);
+        inicial.setBackground(Color.MAGENTA);
+        
+        inputSection.setBackground(Color.WHITE);
+        limiteTexField.setBackground(Color.ORANGE);
+        natalidad.setBackground(Color.PINK);
+        
+        inputSection.setBackground(Color.WHITE);
+        limiteTexField.setBackground(Color.GRAY);
+        generaciones.setBackground(Color.WHITE);*/
