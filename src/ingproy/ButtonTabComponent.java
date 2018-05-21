@@ -80,6 +80,9 @@ public class ButtonTabComponent extends JPanel {
                 pane.remove(i);
                 MainMenu.tabCounter--;
             }
+            if (MainMenu.tabbedPane.getTabCount() == 0){ MainMenu.programsFrame.dispatchEvent
+                                    (new WindowEvent(MainMenu.programsFrame, WindowEvent.WINDOW_CLOSING));;       
+            }
         }
  
         //we don't want to update UI for this button

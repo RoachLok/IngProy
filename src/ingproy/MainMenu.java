@@ -17,7 +17,9 @@ import javax.swing.*;
 class MainMenu extends JFrame {
 
     static int tabCounter = 0;
-
+    static JFrame programsFrame = new JFrame();
+    static JTabbedPane tabbedPane = new JTabbedPane();
+   
     public MainMenu() {
 
         setTitle("Ventana Inicial");
@@ -43,14 +45,12 @@ class MainMenu extends JFrame {
             return null;
         }
     }
-
+    
     public class PanelPrincipal extends JPanel implements ActionListener {
 
         private JButton boton1 = new JButton("Resolución Ecuaciones");
         private JButton boton2 = new JButton("Ecuaciones Cónicas");
         private JButton boton3 = new JButton("Crecimiento Población");
-        private JFrame programsFrame = new JFrame();
-        private JTabbedPane tabbedPane = new JTabbedPane();
         private ImageIcon icon = createImageIcon("images/middle.gif");
 
         public PanelPrincipal() {
@@ -112,7 +112,7 @@ class MainMenu extends JFrame {
                 tabbedPane.setTabComponentAt(tabCounter, tabComponent);
                 tabCounter++;
             }
-
+            
         }
     }
 
