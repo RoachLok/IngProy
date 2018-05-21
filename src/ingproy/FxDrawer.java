@@ -36,35 +36,44 @@ public class FxDrawer extends MainWin{
         
         paletPanel.setBackground(Color.WHITE);
         
-        //"Spacer"
-        JLabel blankSpace = new JLabel (" ");
+        //Create Elipsoids Panel
+        JPanel elipsoids = new JPanel ();
         
-        //Eq. input field.
-        JPanel inputSection = new JPanel ();
-        inputSection.setLayout(new FlowLayout(3));
+        JLabel upper = new JLabel ("");
         
-        JTextField inputText = new JTextField ("1/X", 10);
         
-        JLabel inputTextLabel = new JLabel ("Expresión: ");
-        inputTextLabel.setFont(new Font(Font.SERIF, Font.PLAIN,  15));
-        inputTextLabel.setLabelFor(inputText);
-        inputSection.add(inputTextLabel);
-        inputSection.add(inputText);
+        //Create Parabola Panel
+        JPanel parabola = new JPanel ();
         
-        //Button to input the data.
-        JButton inButton = new JButton ();
         
-        // Sets background color to all components.
-        JComponent[] components = {blankSpace, inputSection, inputText, inputTextLabel, paletPanel};
         
-        for (JComponent component : components) {
-            component.setBackground(Color.WHITE);
+        
+        
+        //Create Hiperbola Panel
+        JPanel hiperbola = new JPanel ();
+        
+        
+        
+        //Puts the figure panels in the same panel
+        JPanel figures = new JPanel ();
+        
+        JPanel figureStack [] = { elipsoids, parabola, hiperbola };
+        String comboBoxItems [] = { "Elipsoides", "Parabolas", "Hiperbolas" };
+        
+        for (int i = 0; i < figureStack.length; i++) {
+            figures.add(figureStack[i], comboBoxItems[i]);
         }
         
-        // Adds it to the paletPanel.
-        paletPanel.add(blankSpace);
-        paletPanel.add(inputSection);
+        //Initialize ComboBox
+        JPanel comboBoxHolder = new JPanel ();
         
+        JComboBox cb = new JComboBox(comboBoxItems);
+        //cb.setEditable(false);
+        comboBoxHolder.add(cb);
+        
+        //Adds components to paletPanel
+        paletPanel.add(comboBoxHolder, BorderLayout.PAGE_START);
+        paletPanel.add(figures, BorderLayout.CENTER);
         
         return paletPanel;
     }   
