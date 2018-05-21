@@ -15,7 +15,7 @@ import javax.swing.*;
  * @author jtabo_000
  */
 class MainMenu extends JFrame {
-    
+
     static int tabCounter = 0;
 
     public MainMenu() {
@@ -30,7 +30,7 @@ class MainMenu extends JFrame {
         Footer foo = new Footer();
         add(foo, BorderLayout.SOUTH);
     }
-    
+
     /**
      * Returns an ImageIcon, or null if the path was invalid.
      */
@@ -43,7 +43,7 @@ class MainMenu extends JFrame {
             return null;
         }
     }
-     
+
     public class PanelPrincipal extends JPanel implements ActionListener {
 
         private JButton boton1 = new JButton("Resolución Ecuaciones");
@@ -52,7 +52,6 @@ class MainMenu extends JFrame {
         private JFrame programsFrame = new JFrame();
         private JTabbedPane tabbedPane = new JTabbedPane();
         private ImageIcon icon = createImageIcon("images/middle.gif");
-          
 
         public PanelPrincipal() {
             add(boton1, BorderLayout.WEST);
@@ -67,16 +66,14 @@ class MainMenu extends JFrame {
             boton3.addActionListener(this);
             boton3.setActionCommand("3");
 
-            programsFrame.setSize(300, 400);
+            programsFrame.setSize(1000, 600);
             programsFrame.setLocationRelativeTo(null);
             programsFrame.setTitle("Programas");
 
             tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-             
+
         }
-        
-        
-        
+
         //setSize(winWidth, winLength);
         //setLocationRelativeTo(null);
         @Override
@@ -103,6 +100,7 @@ class MainMenu extends JFrame {
                 ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane);
                 tabbedPane.setTabComponentAt(tabCounter, tabComponent);
                 tabCounter++;
+
             } else if (e.getActionCommand().equals("3")) {
                 programsFrame.add(tabbedPane);
                 programsFrame.setVisible(true);
@@ -112,13 +110,12 @@ class MainMenu extends JFrame {
 
                 ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane);
                 tabbedPane.setTabComponentAt(tabCounter, tabComponent);
-                tabCounter++;    
+                tabCounter++;
             }
-            
+
         }
     }
-        
-        
+
     public class Footer extends JPanel implements ActionListener {
 
         JButton botonExit = new JButton("Exit");
