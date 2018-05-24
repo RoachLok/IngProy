@@ -10,10 +10,12 @@ Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
 */
 
 import javax.swing.*;
-import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+
  
 /**
  * Component to be used as tabComponent;
@@ -22,8 +24,9 @@ import java.awt.event.*;
  */
 public class ButtonTabComponent extends JPanel {
     private final JTabbedPane pane;
- 
-    public ButtonTabComponent(final JTabbedPane pane) {
+    private String iconPath;
+    
+    public ButtonTabComponent(final JTabbedPane pane, ImageIcon iconPath) {
         //unset default FlowLayout' gaps
         super(new FlowLayout(FlowLayout.LEFT, 0, 0));
         if (pane == null) {
@@ -32,6 +35,10 @@ public class ButtonTabComponent extends JPanel {
         this.pane = pane;
         setOpaque(false);
          
+        //create JLabel to add the icons
+        JLabel jlIcon=new JLabel();
+        jlIcon.setIcon(iconPath);
+        
         //make JLabel read titles from JTabbedPane
         JLabel label = new JLabel() {
             public String getText() {
@@ -42,10 +49,13 @@ public class ButtonTabComponent extends JPanel {
                 return null;
             }
         };
-         
+        
+        //add icon
+        add(jlIcon);        
+        //title
         add(label);
         //add more space between the label and the button
-        label.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
+        label.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         //tab button
         JButton button = new TabButton();
         add(button);
@@ -57,7 +67,7 @@ public class ButtonTabComponent extends JPanel {
         public TabButton() {
             int size = 17;
             setPreferredSize(new Dimension(size, size));
-            setToolTipText("close this tab");
+            setToolTipText("cerrar pestaña");
             //Make the button looks the same for all Laf's
             setUI(new BasicButtonUI());
             //Make it transparent
