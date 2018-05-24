@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javafx.geometry.Pos;
 import javafx.scene.layout.TilePane;
 import javax.swing.*;
@@ -19,6 +21,10 @@ import javax.swing.*;
  */
 //In this class we will implement and resolve the population problem
 public class GrowthRepresenter extends MainWin{
+    private double k;
+    private double poblInicial;
+    private double tasaNat;
+    private double generaciones;
     
     public GrowthRepresenter(int winWidth, int winLength) {
         super(winWidth, winLength);
@@ -52,15 +58,23 @@ public class GrowthRepresenter extends MainWin{
         JTextField natalidadTexField =    new JTextField ("", 9);
         JTextField generacionesTexField = new JTextField ("", 9);
         
-        double limitee = Double.valueOf(limiteTexField.getText());//aqui cojo el numero del texfield
+        double limite = Double.valueOf(limiteTexField.getText());//aqui cojo el numero del texfield
         //lo paso a string y de string a double
-        
-        double poblInicio = Double.valueOf(inicialTexField.getText());
-        double natalidadd = Double.valueOf(natalidadTexField.getText());
+        double inicial = Double.valueOf(inicialTexField.getText());
+        double natalidad = Double.valueOf(natalidadTexField.getText());
         double generacioness = Double.valueOf(generacionesTexField.getText());
+        
         JButton continuar = new JButton("Continuar");
          paletPanel.add(continuar,BorderLayout.WEST);
-         continuar.addActionListener(this);
+         continuar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                k = Double.valueOf(limiteTexField.getText());
+                poblInicial = Double.valueOf(inicialTexField.getText());
+                tasaNat = Double.valueOf(natalidadTexField.getText());
+                generaciones =Double.valueOf(generacionesTexField.getText());
+            }
+        });
          continuar.setActionCommand("Continua");
          continuar.setVisible(true);
          Dimension minimumSize = new Dimension(100, 50);
@@ -68,24 +82,24 @@ public class GrowthRepresenter extends MainWin{
         
         limiteTexField.setMinimumSize(minimumSize);//tamaño minimo para no espachurrar
      
-        JLabel limite = new JLabel ("Limite popablación (k)");
-        JLabel inicial = new JLabel (" Población Inicial ");
-        JLabel natalidad = new JLabel ("Tasa natalidad ");
+        JLabel k = new JLabel ("Limite popablación (k)");
+        JLabel poblInicial = new JLabel (" Población Inicial ");
+        JLabel tasaNat = new JLabel ("Tasa natalidad ");
         JLabel generaciones = new JLabel ("Generaciones");
         
         
         limiteTexField.setMinimumSize(minimumSize);
         
-        limite.setLabelFor(limiteTexField);
-        inputSection.add(limite);
+        k.setLabelFor(limiteTexField);
+        inputSection.add(k);
         inputSection.add(limiteTexField);
         
-        inicial.setLabelFor(inicialTexField);
-        inputSection.add(inicial);
+        poblInicial.setLabelFor(inicialTexField);
+        inputSection.add(poblInicial);
         inputSection.add(inicialTexField);
        
-        natalidad.setLabelFor(natalidadTexField);
-        inputSection.add(natalidad);
+        tasaNat.setLabelFor(natalidadTexField);
+        inputSection.add(tasaNat);
         inputSection.add(natalidadTexField);
         
         generaciones.setLabelFor(generacionesTexField);
@@ -100,24 +114,23 @@ public class GrowthRepresenter extends MainWin{
         paletPanel.add(blankSpace);
         paletPanel.add(inputSection);
      //   paletPanel.add(inputTex3);
-        
         return paletPanel;
     }   
       
   @Override
     JComponent output() {
-     //   poblacion inicial * tasa natalidad y lom imprimes
-     
-    // primeraIteracion =  poblInicio * tasaNat;
-    System.out.println("Primera iteracion");
-        //k- poblacion / k
-        
-      //  segundaIteracion = (k - poblacion) / k;
-        System.out.println("segunda iteracion");
+    
+  
+        double primeraIteracion = poblInicial*tasaNat;
+    System.out.println(primeraIteracion);
+    double segundaIteracion =(k - poblInicial) / k;
+    System.out.println(segundaIteracion);
+    
+    double poblacionFinal = primeraIteracion * segundaIteracion;
         
        // poblacionFinal = primeraIteracion * segundaIteracion;
         // multiplicar la primera y segunda itera
-        System.out.println("Final iteracion");
+        System.out.println(poblacionFinal);
           
         
         return test;
@@ -126,7 +139,8 @@ public class GrowthRepresenter extends MainWin{
     @Override
     JComponent pastOutput() {
        
-        System.out.println("Final iteracion");
+        poblacionTotal = poblacionFinal * generaciones;
+        System.out.println(poblacionTotal);
     
         
         
