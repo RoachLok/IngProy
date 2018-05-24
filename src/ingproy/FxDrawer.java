@@ -7,6 +7,7 @@ package ingproy;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Graphics;
 
 /**
  *
@@ -14,13 +15,13 @@ import java.awt.*;
  */
 public class FxDrawer extends MainWin{
     
-    public FxDrawer(int winWidth, int winLength, String title) {
-        super(winWidth, winLength, title);
+    public FxDrawer(int minWidth, int minLength) {
+        super(minWidth, minLength);
         
     }
     
-    public FxDrawer(int winWidth, int winLength, String title, int widthPos, int lengthPos) {
-        super(winWidth, winLength, title, widthPos, lengthPos);
+    public FxDrawer(int minWidth, int minLength, boolean scroller) {
+        super(minWidth, minLength, scroller);
     }
 
     @Override
@@ -80,9 +81,28 @@ public class FxDrawer extends MainWin{
     
     JPanel test = new JPanel ();
     
+    public class OutPanel extends JPanel {
+        
+        protected void paintComponent (Graphics g){
+            int w = this.getWidth() / 2;
+            int h = this.getHeight() / 2;
+
+            Graphics2D g1 = (Graphics2D) g;
+            g1.setStroke(new BasicStroke(2));
+            g1.setColor(Color.black);
+            g1.drawLine(0, h, w * 2, h);
+            g1.drawLine(w, 0, w, h * 2);
+            g1.drawString("0", w - 7, h + 13);
+        }
+    }
+    
     @Override
     JComponent output() {
         JPanel paletPanel = new JPanel ();
+        
+        OutPanel draw = new OutPanel();   
+        draw.setBackground(Color.red);
+        paletPanel.add(draw, BorderLayout.CENTER);
         
         return paletPanel;
     }

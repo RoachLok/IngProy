@@ -82,7 +82,7 @@ class MainMenu extends JFrame {
             if (e.getActionCommand().equals("1")) {
                 programsFrame.add(tabbedPane);
                 programsFrame.setVisible(true);
-                EqSolver EqSolver = new EqSolver(1000, 600, "EqSolver");
+                EqSolver EqSolver = new EqSolver(1000, 600);
                 tabbedPane.addTab("EqSolver", icon, EqSolver, "Resuleve Ecuaciones");
                 tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_1);
 
@@ -93,7 +93,7 @@ class MainMenu extends JFrame {
             } else if (e.getActionCommand().equals("2")) {
                 programsFrame.add(tabbedPane);
                 programsFrame.setVisible(true);
-                FxDrawer FxDrawer = new FxDrawer(1000, 600, "FxDrawer");
+                FxDrawer FxDrawer = new FxDrawer(1000, 600, false);
                 tabbedPane.addTab("FxDrawer", icon, FxDrawer, "Representador de cónicas");
                 tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_2);
 
@@ -104,7 +104,7 @@ class MainMenu extends JFrame {
             } else if (e.getActionCommand().equals("3")) {
                 programsFrame.add(tabbedPane);
                 programsFrame.setVisible(true);
-                GrowthRepresenter GrowthRepresenter = new GrowthRepresenter(1, 1, "GrowthRepresenter");
+                GrowthRepresenter GrowthRepresenter = new GrowthRepresenter(1, 1);
                 tabbedPane.addTab("Popu.Simu.", icon, GrowthRepresenter, "Simula el crecimieno de una población");
                 tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_3);
 

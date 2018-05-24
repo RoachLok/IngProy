@@ -19,14 +19,11 @@ abstract class MainWin extends JPanel implements ActionListener {
 
     private final String newLine = "/n";
 
-    public MainWin(int winWidth, int winLength, String title) {
+    public MainWin(int winWidth, int winLength) {
         // Sets window's width and length, and spawning location.
         
         setLayout(new BorderLayout());
-
-        //setTitle(title);
-        //setSize(winWidth, winLength);
-        //setLocationRelativeTo(null);
+        setSize(winWidth, winLength);
 
         // Generates main JPanel
         JPanel primaryPanel = new JPanel();
@@ -38,7 +35,7 @@ abstract class MainWin extends JPanel implements ActionListener {
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setBackground(Color.MAGENTA);
         JScrollPane outputScroller = new JScrollPane(output());
-
+        
         outputScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         outputScroller.setBackground(Color.RED);
 
@@ -79,31 +76,30 @@ abstract class MainWin extends JPanel implements ActionListener {
 
     }
 
-    public MainWin(int winWidth, int winLength, String title, int widthPos, int lengthPos) {
+    public MainWin(int minWidth, int minLength, boolean scroller) {
         // Sets window's width and length, and spawning location.
         
         setLayout(new BorderLayout());
         
-        //setTitle(title);
-        //setSize(winWidth, winLength);
-        //setLocation(widthPos, lengthPos);
+        setSize(minWidth, minLength);  
 
         // Generates main JPanel
         JPanel primaryPanel = new JPanel();
         primaryPanel.setLayout(new BoxLayout(primaryPanel, BoxLayout.X_AXIS));
         primaryPanel.setBackground(Color.RED);
 
-        // Inserts on the main JPanel two Panels, one JPanel on the left and one JScrollerPane on the right.
+        // Inserts on the main JPanel two Panels, one JPanel on the left and another on the right.
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setBackground(Color.MAGENTA);
-        JScrollPane outputScroller = new JScrollPane(output());
-
-        outputScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        outputScroller.setBackground(Color.RED);
+        
+        JPanel outputPanel = new JPanel();
+        outputPanel.setLayout(new BorderLayout());
+        outputPanel.setBackground(Color.RED);
+        outputPanel.add(output());
 
         //Sets a splitter between leftPanel and outputScroller by adding them to a JSplitPanel.
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, outputScroller);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, outputPanel);
         splitPane.setOneTouchExpandable(true);
         splitPane.setDividerLocation(300);
         splitPane.setResizeWeight(0.30);
@@ -111,7 +107,7 @@ abstract class MainWin extends JPanel implements ActionListener {
         //Provide minimum sizes for the two components in the split pane.
         Dimension minimumSize = new Dimension(100, 50);
         leftPanel.setMinimumSize(minimumSize);
-        outputScroller.setMinimumSize(minimumSize);
+        outputPanel.setMinimumSize(minimumSize);
 
         //Adds the splitPane to the primaryPanel
         primaryPanel.add(splitPane);
