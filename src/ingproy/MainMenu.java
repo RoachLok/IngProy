@@ -19,7 +19,10 @@ class MainMenu extends JFrame {
     static int tabCounter = 0;
     static JFrame programsFrame = new JFrame();
     static JTabbedPane tabbedPane = new JTabbedPane();
-   
+    static ImageIcon growthIcon = createImageIcon("icons/poblacion.png");
+    static ImageIcon eqSolverIcon = createImageIcon("icons/ecuaciones.png");
+    static ImageIcon fxDrawIcon = createImageIcon ("icons/conicas.png");
+    
     public MainMenu() {
 
         setTitle("Ventana Inicial");
@@ -51,8 +54,10 @@ class MainMenu extends JFrame {
         private JButton boton1 = new JButton("Resolución Ecuaciones");
         private JButton boton2 = new JButton("Ecuaciones Cónicas");
         private JButton boton3 = new JButton("Crecimiento Población");
-        private ImageIcon icon = createImageIcon("images/middle.gif");
-
+        private ImageIcon growthIcon = createImageIcon("icons/poblacion.png");
+        private ImageIcon eqSolverIcon = createImageIcon("icons/ecuaciones.png");
+        private ImageIcon fxDrawIcon = createImageIcon ("icons/conicas.png");
+       
         public PanelPrincipal() {
             add(boton1, BorderLayout.WEST);
             boton1.addActionListener(this);
@@ -83,10 +88,10 @@ class MainMenu extends JFrame {
                 programsFrame.add(tabbedPane);
                 programsFrame.setVisible(true);
                 EqSolver EqSolver = new EqSolver(1000, 600);
-                tabbedPane.addTab("EqSolver", icon, EqSolver, "Resuleve Ecuaciones");
+                tabbedPane.addTab("EqSolver", eqSolverIcon, EqSolver, "Resuleve Ecuaciones");
                 tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_1);
 
-                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane);
+                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, eqSolverIcon);
                 tabbedPane.setTabComponentAt(tabCounter, tabComponent);
                 tabCounter++;
 
@@ -94,10 +99,10 @@ class MainMenu extends JFrame {
                 programsFrame.add(tabbedPane);
                 programsFrame.setVisible(true);
                 FxDrawer FxDrawer = new FxDrawer(1000, 600, false);
-                tabbedPane.addTab("FxDrawer", icon, FxDrawer, "Representador de cónicas");
+                tabbedPane.addTab("FxDrawer", fxDrawIcon, FxDrawer, "Representador de cónicas");
                 tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_2);
 
-                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane);
+                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, fxDrawIcon);
                 tabbedPane.setTabComponentAt(tabCounter, tabComponent);
                 tabCounter++;
 
@@ -105,10 +110,10 @@ class MainMenu extends JFrame {
                 programsFrame.add(tabbedPane);
                 programsFrame.setVisible(true);
                 GrowthRepresenter GrowthRepresenter = new GrowthRepresenter(1, 1);
-                tabbedPane.addTab("Popu.Simu.", icon, GrowthRepresenter, "Simula el crecimieno de una población");
+                tabbedPane.addTab("Popu.Simu.", growthIcon, GrowthRepresenter, "Simula el crecimieno de una población");
                 tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_3);
 
-                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane);
+                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, growthIcon);
                 tabbedPane.setTabComponentAt(tabCounter, tabComponent);
                 tabCounter++;
             }
