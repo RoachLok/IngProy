@@ -19,11 +19,11 @@ abstract class MainWin extends JPanel implements ActionListener {
 
     private final String newLine = "/n";
 
-    public MainWin(int winWidth, int winLength) {
+    public MainWin(int minWidth, int minLength) {
         // Sets window's width and length, and spawning location.
         
         setLayout(new BorderLayout());
-        setSize(winWidth, winLength);
+        setSize(minWidth, minLength);
 
         // Generates main JPanel
         JPanel primaryPanel = new JPanel();
@@ -80,23 +80,22 @@ abstract class MainWin extends JPanel implements ActionListener {
         // Sets window's width and length, and spawning location.
         
         setLayout(new BorderLayout());
-        
-        setSize(minWidth, minLength);  
+        setSize(minWidth, minLength);
 
         // Generates main JPanel
         JPanel primaryPanel = new JPanel();
         primaryPanel.setLayout(new BoxLayout(primaryPanel, BoxLayout.X_AXIS));
         primaryPanel.setBackground(Color.RED);
 
-        // Inserts on the main JPanel two Panels, one JPanel on the left and another on the right.
+        // Inserts on the main JPanel two Panels, one JPanel on the left and one JScrollerPane on the right.
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setBackground(Color.MAGENTA);
         
         JPanel outputPanel = new JPanel();
         outputPanel.setLayout(new BorderLayout());
-        outputPanel.setBackground(Color.RED);
         outputPanel.add(output());
+        outputPanel.setBackground(Color.RED);
 
         //Sets a splitter between leftPanel and outputScroller by adding them to a JSplitPanel.
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, outputPanel);
@@ -114,12 +113,9 @@ abstract class MainWin extends JPanel implements ActionListener {
 
         //Inserts to the Left JPanel an upper JPanel and a lower JScrollerPane.
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
+        inputPanel.setLayout(new GridLayout());
         inputPanel.setBackground(Color.YELLOW);
+
         JScrollPane explorerScrollPane = new JScrollPane(pastOutput());
         explorerScrollPane.setBackground(Color.darkGray);
 
@@ -129,7 +125,7 @@ abstract class MainWin extends JPanel implements ActionListener {
         splitPane2.setResizeWeight(0.5);
 
         //Allows to insert a JComponent inside inputPanel.
-        inputPanel.add(input(), gbc);
+        inputPanel.add(input());
 
         //Adds the JSplitPane to the left JPanel
         leftPanel.add(splitPane2);
