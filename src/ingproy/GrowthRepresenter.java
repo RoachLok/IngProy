@@ -25,6 +25,7 @@ public class GrowthRepresenter extends MainWin{
     private double poblInicial;
     private double tasaNat;
     private double generaciones;
+    double poblacionFinal;
     
     public GrowthRepresenter(int winWidth, int winLength) {
         super(winWidth, winLength);
@@ -58,11 +59,11 @@ public class GrowthRepresenter extends MainWin{
         JTextField natalidadTexField =    new JTextField ("", 9);
         JTextField generacionesTexField = new JTextField ("", 9);
         
-        double limite = Double.valueOf(limiteTexField.getText());//aqui cojo el numero del texfield
+//        double limite = Double.valueOf(limiteTexField.getText());//aqui cojo el numero del texfield
         //lo paso a string y de string a double
-        double inicial = Double.valueOf(inicialTexField.getText());
-        double natalidad = Double.valueOf(natalidadTexField.getText());
-        double generacioness = Double.valueOf(generacionesTexField.getText());
+    //    double inicial = Double.valueOf(inicialTexField.getText());
+    //    double natalidad = Double.valueOf(natalidadTexField.getText());
+    //    double generacioness = Double.valueOf(generacionesTexField.getText());
         
         JButton continuar = new JButton("Continuar");
          paletPanel.add(continuar,BorderLayout.WEST);
@@ -139,7 +140,7 @@ public class GrowthRepresenter extends MainWin{
     @Override
     JComponent pastOutput() {
        
-        poblacionTotal = poblacionFinal * generaciones;
+        double poblacionTotal = poblacionFinal * generaciones;
         System.out.println(poblacionTotal);
     
         
