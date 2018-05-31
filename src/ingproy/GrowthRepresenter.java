@@ -74,7 +74,16 @@ public class GrowthRepresenter extends MainWin{
                 poblInicial = Double.valueOf(inicialTexField.getText());
                 tasaNat = Double.valueOf(natalidadTexField.getText());
                 generaciones =Double.valueOf(generacionesTexField.getText());
-            }
+                output();
+               // actionPerformed(outuput());
+             //   continuar.addActionListener(output());
+                output().setVisible(true);
+     
+                
+                
+                // System.setOut(output()); // esto es lo que tengo que modifi
+                 
+              } 
         });
          continuar.setActionCommand("Continua");
          continuar.setVisible(true);
@@ -120,7 +129,15 @@ public class GrowthRepresenter extends MainWin{
       
   @Override
     JComponent output() {
-    
+    JPanel paletPanel = new JPanel ();
+        paletPanel.setLayout(new BoxLayout(paletPanel, BoxLayout.Y_AXIS));
+        paletPanel.setBorder(BorderFactory.createCompoundBorder(
+                                    BorderFactory.createTitledBorder("= Representación crecimiento poblaciones ="),
+                                        BorderFactory.createEmptyBorder(5,5,5,5)));
+        paletPanel.setBackground(Color.WHITE);
+        JLabel blankSpace = new JLabel (" ");
+        blankSpace.setBackground(Color.WHITE);
+        
   
         double primeraIteracion = poblInicial*tasaNat;
     System.out.println(primeraIteracion);
@@ -134,12 +151,22 @@ public class GrowthRepresenter extends MainWin{
         System.out.println(poblacionFinal);
           
         
-        return test;
+        return paletPanel;
     }
 
     @Override
     JComponent pastOutput() {
-       
+       JPanel paletPanel = new JPanel ();
+        paletPanel.setLayout(new BoxLayout(paletPanel, BoxLayout.Y_AXIS));
+        paletPanel.setBorder(BorderFactory.createCompoundBorder(
+                                    BorderFactory.createTitledBorder("= Representación total  ="),
+                                        BorderFactory.createEmptyBorder(5,5,5,5)));
+        paletPanel.setBackground(Color.WHITE);
+        
+        //"Spacer"
+        JLabel blankSpace = new JLabel (" ");
+        blankSpace.setBackground(Color.WHITE);
+        
         double poblacionTotal = poblacionFinal * generaciones;
         System.out.println(poblacionTotal);
     
@@ -156,7 +183,7 @@ public class GrowthRepresenter extends MainWin{
             }
         */
         
-        return test;
+        return paletPanel;
     }
   
     
