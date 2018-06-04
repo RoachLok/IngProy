@@ -11,31 +11,69 @@ import javax.swing.*;
 
 /**
  *
- * @author antoniocalvocalvo
  * @author jtabo_000
  */
-class MainMenu extends JFrame {
+public class MainMenu extends JFrame implements ActionListener {
 
-    static int tabCounter = 0;
-    static JFrame programsFrame = new JFrame();
+    static int tabCounter = 2;
     static JTabbedPane tabbedPane = new JTabbedPane();
-    static ImageIcon growthIcon = createImageIcon("icons/poblacion.png");
-    static ImageIcon eqSolverIcon = createImageIcon("icons/ecuaciones.png");
-    static ImageIcon fxDrawIcon = createImageIcon ("icons/conicas.png");
+    private JPanel addTab = new JPanel();
+    static JPanel selectPanel = new JPanel();
     
+    private ImageIcon eqButton = createImageIcon("icons/bigIcons/eq2.png");
+    private ImageIcon fxButton = createImageIcon("icons/bigIcons/gr2.png");
+    private ImageIcon grwButton = createImageIcon("icons/bigIcons/grow2.png");
+    private JButton boton1 = new JButton("Resolución Ecuaciones", eqButton);
+    private JButton boton2 = new JButton("Ecuaciones Cónicas", fxButton);
+    private JButton boton3 = new JButton("Crecimiento Población", grwButton);
+    
+    private ImageIcon growthIcon = createImageIcon("icons/poblacion.png");
+    private ImageIcon eqSolverIcon = createImageIcon("icons/ecuaciones.png");
+    private ImageIcon fxDrawIcon = createImageIcon("icons/conicas.png");
+    
+    private ImageIcon sumTab = createImageIcon("icons/suma4.png");
+    private ImageIcon blankTab = createImageIcon("icons/blank.png");
+
     public MainMenu() {
 
-        setTitle("Ventana Inicial");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLayout(new BorderLayout());
+        setSize(1100, 700);
+        setLocationRelativeTo(null);
+        setTitle("Proyecto");
+        add(tabbedPane);
 
-        PanelPrincipal PP = new PanelPrincipal();
-        add(PP, BorderLayout.NORTH);
+        selectPanel.add(boton1, BorderLayout.WEST);
+        boton1.addActionListener(this);
+        boton1.setActionCommand("1");
 
-        Footer foo = new Footer();
-        add(foo, BorderLayout.SOUTH);
+        selectPanel.add(boton2, BorderLayout.CENTER);
+        boton2.addActionListener(this);
+        boton2.setActionCommand("2");
+
+        selectPanel.add(boton3, BorderLayout.EAST);
+        boton3.addActionListener(this);
+        boton3.setActionCommand("3");
+        
+        tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        
+        tabbedPane.addTab("Nueva Pestaña", blankTab, selectPanel, "Nueva pestaña");
+        
+        ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, blankTab);
+        tabbedPane.setTabComponentAt(tabbedPane.getTabCount()-1, tabComponent);
+        
+        tabbedPane.addTab("", sumTab, addTab, "Añadir Pestaña");
+        AddButtonTabComponent addTabComp = new AddButtonTabComponent(tabbedPane, sumTab);
+        tabbedPane.setTabComponentAt(tabbedPane.getTabCount()-1, addTabComp);  
+        
     }
-
+    
+    static void addBlankTab (){
+        ImageIcon blankTab = createImageIcon("icons/blank.png");
+        tabbedPane.insertTab("Nueva Pestaña", blankTab, selectPanel, "Nueva pestaña",tabbedPane.getTabCount()-1);
+        ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, blankTab);
+        tabbedPane.setTabComponentAt(tabbedPane.getTabCount()-2, tabComponent);
+        tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-2);
+    }
+    
     /**
      * Returns an ImageIcon, or null if the path was invalid.
      */
@@ -49,95 +87,47 @@ class MainMenu extends JFrame {
         }
     }
     
-    public class PanelPrincipal extends JPanel implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        int deducedIndex = tabbedPane.getTabCount()-2;
+        if (e.getActionCommand().equals("1")) {
+            add(tabbedPane);
+            setVisible(true);
+            EqSolver EqSolver = new EqSolver(1000, 600);
+            tabbedPane.remove(deducedIndex);
+            tabbedPane.insertTab("EqSolver", eqSolverIcon, EqSolver, "Resuleve Ecuaciones", tabbedPane.getTabCount()-1);
+            tabbedPane.setMnemonicAt(deducedIndex, KeyEvent.VK_1);
 
-        private JButton boton1 = new JButton("Resolución Ecuaciones");
-        private JButton boton2 = new JButton("Ecuaciones Cónicas");
-        private JButton boton3 = new JButton("Crecimiento Población");
-        private ImageIcon growthIcon = createImageIcon("icons/poblacion.png");
-        private ImageIcon eqSolverIcon = createImageIcon("icons/ecuaciones.png");
-        private ImageIcon fxDrawIcon = createImageIcon ("icons/conicas.png");
-       
-        public PanelPrincipal() {
-            add(boton1, BorderLayout.WEST);
-            boton1.addActionListener(this);
-            boton1.setActionCommand("1");
+            ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, eqSolverIcon);
+            tabbedPane.setTabComponentAt(deducedIndex, tabComponent);
+            tabbedPane.setSelectedIndex(deducedIndex);
 
-            add(boton2, BorderLayout.CENTER);
-            boton2.addActionListener(this);
-            boton2.setActionCommand("2");
+        } else if (e.getActionCommand().equals("2")) {
+            add(tabbedPane);
+            setVisible(true);
+            FxDrawer FxDrawer = new FxDrawer(1000, 600, false);
+            tabbedPane.remove(deducedIndex);
+            tabbedPane.insertTab("FxDrawer", fxDrawIcon, FxDrawer, "Representador de cónicas", tabbedPane.getTabCount()-1);
+            tabbedPane.setMnemonicAt(deducedIndex, KeyEvent.VK_2);
 
-            add(boton3, BorderLayout.EAST);
-            boton3.addActionListener(this);
-            boton3.setActionCommand("3");
+            ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, fxDrawIcon);
+            tabbedPane.setTabComponentAt(deducedIndex, tabComponent);
+            tabbedPane.setSelectedIndex(deducedIndex);
 
-            programsFrame.setSize(1000, 600);
-            programsFrame.setLocationRelativeTo(null);
-            programsFrame.setTitle("Programas");
-
-            tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-
-        }
-
-        //setSize(winWidth, winLength);
-        //setLocationRelativeTo(null);
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            if (e.getActionCommand().equals("1")) {
-                programsFrame.add(tabbedPane);
-                programsFrame.setVisible(true);
-                EqSolver EqSolver = new EqSolver(1000, 600);
-                tabbedPane.addTab("EqSolver", eqSolverIcon, EqSolver, "Resuleve Ecuaciones");
-                tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_1);
-
-                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, eqSolverIcon);
-                tabbedPane.setTabComponentAt(tabCounter, tabComponent);
-                tabCounter++;
-
-            } else if (e.getActionCommand().equals("2")) {
-                programsFrame.add(tabbedPane);
-                programsFrame.setVisible(true);
-                FxDrawer FxDrawer = new FxDrawer(1000, 600, false);
-                tabbedPane.addTab("FxDrawer", fxDrawIcon, FxDrawer, "Representador de cónicas");
-                tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_2);
-
-                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, fxDrawIcon);
-                tabbedPane.setTabComponentAt(tabCounter, tabComponent);
-                tabCounter++;
-
-            } else if (e.getActionCommand().equals("3")) {
-                programsFrame.add(tabbedPane);
-                programsFrame.setVisible(true);
-                GrowthRepresenter GrowthRepresenter = new GrowthRepresenter(1, 1);
-                tabbedPane.addTab("Popu.Simu.", growthIcon, GrowthRepresenter, "Simula el crecimieno de una población");
-                tabbedPane.setMnemonicAt(tabCounter, KeyEvent.VK_3);
-
-                ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, growthIcon);
-                tabbedPane.setTabComponentAt(tabCounter, tabComponent);
-                tabCounter++;
-            }
+        } else if (e.getActionCommand().equals("3")) {
+            add(tabbedPane);
+            setVisible(true);
+            GrowthRepresenter GrowthRepresenter = new GrowthRepresenter(1, 1);
+            tabbedPane.remove(deducedIndex);
+            tabbedPane.insertTab("Popu.Simu.", growthIcon, GrowthRepresenter, "Simula el crecimieno de una población", tabbedPane.getTabCount()-1);
+            tabbedPane.setMnemonicAt(deducedIndex, KeyEvent.VK_3);
             
-        }
-    }
 
-    public class Footer extends JPanel implements ActionListener {
-
-        JButton botonExit = new JButton("Exit");
-
-        public Footer() {
-
-            add(botonExit, BorderLayout.LINE_END);
-            botonExit.addActionListener(this);
-
-        }
-
-        @Override //This method stops the program when clicked on the exit button
-        public void actionPerformed(ActionEvent e) {
-
-            System.exit(0);
-
+            ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, growthIcon);
+            tabbedPane.setTabComponentAt(deducedIndex, tabComponent);
+            tabbedPane.setSelectedIndex(deducedIndex);
         }
 
     }
+
 }
