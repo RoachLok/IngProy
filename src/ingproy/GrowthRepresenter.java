@@ -59,12 +59,7 @@ public class GrowthRepresenter extends MainWin{
         JTextField natalidadTexField =    new JTextField ("", 9);
         JTextField generacionesTexField = new JTextField ("", 9);
         
-//        double limite = Double.valueOf(limiteTexField.getText());//aqui cojo el numero del texfield
-        //lo paso a string y de string a double
-    //    double inicial = Double.valueOf(inicialTexField.getText());
-    //    double natalidad = Double.valueOf(natalidadTexField.getText());
-    //    double generacioness = Double.valueOf(generacionesTexField.getText());
-        
+
         JButton continuar = new JButton("Continuar");
          paletPanel.add(continuar,BorderLayout.WEST);
          continuar.addActionListener(new ActionListener() {
@@ -74,15 +69,10 @@ public class GrowthRepresenter extends MainWin{
                 poblInicial = Double.valueOf(inicialTexField.getText());
                 tasaNat = Double.valueOf(natalidadTexField.getText());
                 generaciones =Double.valueOf(generacionesTexField.getText());
-                output();
-               // actionPerformed(outuput());
-             //   continuar.addActionListener(output());
+              
                 output().setVisible(true);
+               // pastOutput().setVisible(true);
      
-                
-                
-                // System.setOut(output()); // esto es lo que tengo que modifi
-                 
               } 
         });
          continuar.setActionCommand("Continua");
@@ -116,10 +106,6 @@ public class GrowthRepresenter extends MainWin{
         inputSection.add(generaciones);
         inputSection.add(generacionesTexField);
         
-        // HACER UN ARRAY QUE CONTENGA A LOS COMPONENTES Y LES PONGA EL COLOR.
-        
-        
-        
         //Adds it to the paletPanel.
         paletPanel.add(blankSpace);
         paletPanel.add(inputSection);
@@ -132,25 +118,35 @@ public class GrowthRepresenter extends MainWin{
     JPanel paletPanel = new JPanel ();
         paletPanel.setLayout(new BoxLayout(paletPanel, BoxLayout.Y_AXIS));
         paletPanel.setBorder(BorderFactory.createCompoundBorder(
-                                    BorderFactory.createTitledBorder("= Representación crecimiento poblaciones ="),
-                                        BorderFactory.createEmptyBorder(5,5,5,5)));
+                             BorderFactory.createTitledBorder("= Representación crecimiento poblaciones ="),
+                             BorderFactory.createEmptyBorder(5,5,5,5)));
         paletPanel.setBackground(Color.WHITE);
+       
         JLabel blankSpace = new JLabel (" ");
         blankSpace.setBackground(Color.WHITE);
         
+        JPanel inputSection = new JPanel ();
+        inputSection.setLayout(new FlowLayout(3));
+        
   
-        double primeraIteracion = poblInicial*tasaNat;
-    System.out.println(primeraIteracion);
+    double primeraIteracion = poblInicial*tasaNat;
     double segundaIteracion =(k - poblInicial) / k;
-    System.out.println(segundaIteracion);
+    double poblacionFinal2 = primeraIteracion * segundaIteracion;
     
-    double poblacionFinal = primeraIteracion * segundaIteracion;
+    
+        JLabel primeraIteracionn  = new JLabel ("primeraIteracion : " + Double.toString(primeraIteracion));
+        JLabel segundaIteracionn = new JLabel (" segundaIteracion: "+ Double.toString(segundaIteracion));
+        JLabel poblacionFinall = new JLabel (" poblacionFinal "+ Double.toString(poblacionFinal2));
         
-       // poblacionFinal = primeraIteracion * segundaIteracion;
-        // multiplicar la primera y segunda itera
-        System.out.println(poblacionFinal);
+        
+        inputSection.add(primeraIteracionn);
+        inputSection.add(segundaIteracionn);
+        inputSection.add(poblacionFinall);
+  
+        paletPanel.add(blankSpace);
+        paletPanel.add(inputSection);
+       
           
-        
         return paletPanel;
     }
 
@@ -159,50 +155,28 @@ public class GrowthRepresenter extends MainWin{
        JPanel paletPanel = new JPanel ();
         paletPanel.setLayout(new BoxLayout(paletPanel, BoxLayout.Y_AXIS));
         paletPanel.setBorder(BorderFactory.createCompoundBorder(
-                                    BorderFactory.createTitledBorder("= Representación total  ="),
-                                        BorderFactory.createEmptyBorder(5,5,5,5)));
+                             BorderFactory.createTitledBorder("= Representación total  ="),
+                             BorderFactory.createEmptyBorder(5,5,5,5)));
         paletPanel.setBackground(Color.WHITE);
         
         //"Spacer"
         JLabel blankSpace = new JLabel (" ");
         blankSpace.setBackground(Color.WHITE);
+        JPanel inputSection = new JPanel ();
+        inputSection.setLayout(new FlowLayout(3));
         
         double poblacionTotal = poblacionFinal * generaciones;
-        System.out.println(poblacionTotal);
-    
-        
-        
 
-       // poblacion final = (inicial * natalidad);
-      //  *genraciones maximo de limite poblacion;
-      /* poblacion = (poblacion * tasaNatalidad * (k - poblacion)) / k;
-            if (poblacion <= 0) {
-                extincion = i + 1;
-                series.add(i + 1, 0);
-                break;
-            }
-        */
+         JLabel poblacionTotall = new JLabel (" Población Total:"+ Double.toString(poblacionTotal));
+          inputSection.add(poblacionTotall);
         
+ 
+        paletPanel.add(blankSpace);
+        paletPanel.add(inputSection);
+       
+         
         return paletPanel;
     }
   
-    
-    
-    
+ 
 }
-/*
-inputSection.setBackground(Color.WHITE);
-        limiteTexField.setBackground(Color.GRAY);
-        limite.setBackground(Color.BLUE);
-        
-        inputSection.setBackground(Color.WHITE);
-        limiteTexField.setBackground(Color.GREEN);
-        inicial.setBackground(Color.MAGENTA);
-        
-        inputSection.setBackground(Color.WHITE);
-        limiteTexField.setBackground(Color.ORANGE);
-        natalidad.setBackground(Color.PINK);
-        
-        inputSection.setBackground(Color.WHITE);
-        limiteTexField.setBackground(Color.GRAY);
-        generaciones.setBackground(Color.WHITE);*/
