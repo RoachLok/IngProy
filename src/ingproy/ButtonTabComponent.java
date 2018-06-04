@@ -24,7 +24,6 @@ import javax.imageio.ImageIO;
  */
 public class ButtonTabComponent extends JPanel {
     private final JTabbedPane pane;
-    private String iconPath;
     
     public ButtonTabComponent(final JTabbedPane pane, ImageIcon iconPath) {
         //unset default FlowLayout' gaps
@@ -89,10 +88,7 @@ public class ButtonTabComponent extends JPanel {
             if (i != -1) {
                 pane.remove(i);
                 MainMenu.tabCounter--;
-            }
-            if (MainMenu.tabbedPane.getTabCount() == 0){ MainMenu.programsFrame.dispatchEvent
-                                    (new WindowEvent(MainMenu.programsFrame, WindowEvent.WINDOW_CLOSING));;       
-            }
+            }       
         }
  
         //we don't want to update UI for this button
