@@ -9,7 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
+/**         //TO DO LIST:   REWORK THE NEW TAB APPEARENCE.
+ *         //               TEST THE jtb.changeEvent(); METHOD TO IMPROVE ADDTAB LISTENING.
  *
  * @author jtabo_000
  */
