@@ -24,8 +24,9 @@ import javax.imageio.ImageIO;
  */
 public class AddButtonTabComponent extends JPanel {
     private final JTabbedPane pane;
+    private MainMenu mainMenu;
     
-    public AddButtonTabComponent(final JTabbedPane pane, ImageIcon iconPath) {
+    public AddButtonTabComponent(final JTabbedPane pane, ImageIcon iconPath, MainMenu mainMenu) {
         //unset default FlowLayout' gaps
         super(new FlowLayout(FlowLayout.LEFT, 0, 0));
         if (pane == null) {
@@ -37,8 +38,10 @@ public class AddButtonTabComponent extends JPanel {
         //tab button
         TabButton tabButton = new TabButton (iconPath);
         add(tabButton);
-        //add more space to the top of the component
-       // setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
+       // add more space to the top of the component
+       setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
+       
+       this.mainMenu = mainMenu;
     }
  
     private class TabButton extends JButton implements ActionListener {
@@ -63,10 +66,11 @@ public class AddButtonTabComponent extends JPanel {
             addActionListener(this);
         }
  
+        @Override
         public void actionPerformed(ActionEvent e) {
             int i = pane.indexOfTabComponent(AddButtonTabComponent.this);
             if (i != -1) {
-                MainMenu.addBlankTab();
+                mainMenu.addBlankTab();
             }
         }
  
