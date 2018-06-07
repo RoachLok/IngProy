@@ -17,9 +17,9 @@ import javax.swing.*;
 public class MainMenu extends JFrame implements ActionListener {
 
     static int tabCounter = 2;
-    static JTabbedPane tabbedPane = new JTabbedPane();
+    private JTabbedPane tabbedPane = new JTabbedPane();
     private JPanel addTab = new JPanel();
-    static JPanel selectPanel = new JPanel();
+    private JPanel selectPanel = new JPanel();
     
     private ImageIcon eqButton = createImageIcon("icons/bigIcons/eq2.png");
     private ImageIcon fxButton = createImageIcon("icons/bigIcons/gr2.png");
@@ -62,12 +62,12 @@ public class MainMenu extends JFrame implements ActionListener {
         tabbedPane.setTabComponentAt(tabbedPane.getTabCount()-1, tabComponent);
         
         tabbedPane.addTab("", sumTab, addTab, "Añadir Pestaña");
-        AddButtonTabComponent addTabComp = new AddButtonTabComponent(tabbedPane, sumTab);
+        AddButtonTabComponent addTabComp = new AddButtonTabComponent(tabbedPane, sumTab,this);
         tabbedPane.setTabComponentAt(tabbedPane.getTabCount()-1, addTabComp);  
         
     }
     
-    static void addBlankTab (){
+     void addBlankTab (){
         ImageIcon blankTab = createImageIcon("icons/blank.png");
         tabbedPane.insertTab("Nueva Pestaña", blankTab, selectPanel, "Nueva pestaña",tabbedPane.getTabCount()-1);
         ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, blankTab);
