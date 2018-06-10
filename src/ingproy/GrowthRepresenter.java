@@ -69,23 +69,32 @@ public class GrowthRepresenter extends MainWin {
         JButton continuar = new JButton("Continuar");
         paletPanel.add(continuar, BorderLayout.WEST);
         continuar.addActionListener(new ActionListener() {
+             public void pulsado(){
+                 
+             }
+   
             @Override
             public void actionPerformed(ActionEvent e) {
-                k = Double.valueOf(limiteTexField.getText());
-                poblInicial = Double.valueOf(inicialTexField.getText());
-                tasaNat = Double.valueOf(natalidadTexField.getText());
-                generaciones = Double.valueOf(generacionesTexField.getText());
-
-                output().setVisible(true);
-              
+              //  k = Double.valueOf(limiteTexField.getText());
+              //  poblInicial = Double.valueOf(inicialTexField.getText());
+             //   tasaNat = Double.valueOf(natalidadTexField.getText());
+            //   generaciones = Double.valueOf(generacionesTexField.getText());
+      
+            // Aquí está accesible unaVariable
+          
+              //output().setVisible(true);
+   
            primeraIteracion(poblInicial, tasaNat);
            segundaIteracion(k, poblInicial);
          
                 
                 // pastOutput().setVisible(true);
-
+// continuar.addInputMethodListener(primeraIteracion(poblInicial, tasaNat));
             }
+
+           
         });
+        
         
         Dimension minimumSize = new Dimension(100, 50);
      
@@ -96,6 +105,8 @@ public class GrowthRepresenter extends MainWin {
         JLabel tasaNat = new JLabel("Tasa natalidad ");
         JLabel generaciones = new JLabel("Generaciones");
 
+        
+      //  continuar.addInputMethodListener(l);
         limiteTexField.setMinimumSize(minimumSize);
 
         k.setLabelFor(limiteTexField);
