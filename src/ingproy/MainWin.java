@@ -122,7 +122,7 @@ abstract class MainWin extends JPanel implements ActionListener {
         //Sets a splitter between inputPanel and explorerScrollPane.
         JSplitPane splitPane2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, inputPanel, explorerScrollPane);
         splitPane2.setOneTouchExpandable(true);
-        splitPane2.setResizeWeight(0.5);
+        splitPane2.setResizeWeight(0.38);
 
         //Allows to insert a JComponent inside inputPanel.
         inputPanel.add(input());
