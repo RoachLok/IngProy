@@ -182,6 +182,8 @@ public class FxDrawer extends MainWin implements ActionListener{
         parabolaPanel.add(label24);
         parabolaPanel.add(label2);
         parabolaPanel.add(ip2);
+        JLabel spacer = new JLabel ("        ");
+        parabolaPanel.add(spacer);
         JButton button2 = new JButton ("Representar");
         button2.addActionListener(this);
         button2.setActionCommand("2");
