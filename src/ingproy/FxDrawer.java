@@ -33,6 +33,7 @@ public class FxDrawer extends MainWin implements ActionListener{
     JPanel paletPane, paletPanel3;
     int zoom = 1;
     ConicDraw cd;
+    MainMenu mainMenu;
     private final ArrayList<JButton> pastButtons = new ArrayList<>();
     
     public FxDrawer(int minWidth, int minLength) {
@@ -40,8 +41,9 @@ public class FxDrawer extends MainWin implements ActionListener{
         
     }
     
-    public FxDrawer(int minWidth, int minLength, boolean scroller) {
+    public FxDrawer(int minWidth, int minLength, boolean scroller, MainMenu mainMenu) {
         super(minWidth, minLength, scroller);
+        this.mainMenu = mainMenu;
     }
     
     int a = 50, b = 50, k = 0, h = 0, choice = 1; 
@@ -171,7 +173,7 @@ public class FxDrawer extends MainWin implements ActionListener{
         JLabel iconLabel = new JLabel();
         ImageIcon parabolaGIF = createImageIcon("icons/formula/parabola.gif");
         iconLabel.setIcon(parabolaGIF);
-        JLabel label2 = new JLabel("      Introduce los valores de:            ");
+        JLabel label2 = new JLabel("                Introduce los valores de:                   ");
         JPanel parabolaPanel = new JPanel(new FlowLayout());
         parabolaPanel.setBackground(Color.white);
         parabolaPanel.add(label22);
@@ -224,16 +226,6 @@ public class FxDrawer extends MainWin implements ActionListener{
     
     JPanel test = new JPanel ();
     
-    public class Test extends JComponent {
-    int zoom = 1;
-        Test (int zoom){
-        this.zoom = zoom;
-        if (zoom == 0){
-            zoom = 1;
-        }
-    }
-    }
-    
     @Override
     JComponent output() {
         paletPane = new JPanel ();
@@ -241,6 +233,7 @@ public class FxDrawer extends MainWin implements ActionListener{
         paletPane.setLayout(new BorderLayout());
         
             cd = new ConicDraw (10, 2, a, b, k, h);
+            //pastButtons.add(doPastButton("Parabola", 10, a, b, k, h));
             paletPane.add(cd);
             zoomSlider = new JSlider(JSlider.HORIZONTAL, -100, 100, 1);
                 
@@ -255,13 +248,28 @@ public class FxDrawer extends MainWin implements ActionListener{
         
         return paletPane;
     }
-
+    
+    public JButton doPastButton (String type, int zoom, int a, int b, int k, int h){
+        String displayed = type+":  Zoom: "+zoom+". Valores: a: "+a+", b: "+b+", k: "+k+", h: "+h+".";
+        
+        JButton jbutton = new JButton (displayed);
+        setBorder(null);
+        jbutton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //Pintar la misma pero con otro color cuando focus y poner como antes después.
+        }   
+        });
+        return jbutton;
+    }
+    
     @Override
     JComponent pastOutput() {
         paletPanel3 = new JPanel ();
-       /* for (int i = 0; i < pastButtons.size(); i++) {
-            paletPanel3.add(pastButtons.get(i));
-        }*/
+        paletPanel3.setBorder(BorderFactory.createTitledBorder("Funciones introducidas"));
+        paletPanel3.setLayout(new BoxLayout(paletPanel3, BoxLayout.Y_AXIS));
+        paletPanel3.add(doPastButton("Parabola", 2, a, b, k, h));
+        
         return paletPanel3;
     }
     
@@ -277,11 +285,9 @@ public class FxDrawer extends MainWin implements ActionListener{
                 h = ip.getHVal();
                 choice = 1;
                 newCD = new ConicDraw (zoom, choice, a, b, k, h);
-                newCD.revalidate();
-                newCD.repaint();
-                newCD.validate();
-                newCD.updateUI();
-              
+                paletPanel3.add(doPastButton("Elipsoide", zoom, a, b, k, h));
+                paletPanel3.revalidate();
+                mainMenu.refreshTab();
                 paletPane.add(newCD);
                 break;
             case "2":
@@ -290,11 +296,10 @@ public class FxDrawer extends MainWin implements ActionListener{
                 h = ip2.getHVal();
                 choice = 2;
                 newCD = new ConicDraw (zoom, choice, a, b, k, h);
-                newCD.revalidate();
-                newCD.repaint();
-                newCD.validate();
-                
-                newCD.updateUI();
+                int nulo = 0;
+                paletPanel3.add(doPastButton("Parabola", zoom, a, nulo, k, h));
+                paletPanel3.revalidate();
+                mainMenu.refreshTab();
                 paletPane.add(newCD);
                 break;
             case "3":
@@ -304,11 +309,9 @@ public class FxDrawer extends MainWin implements ActionListener{
                 h = ip3.getHVal();
                 choice = 3;
                 newCD = new ConicDraw (zoom, choice, a, b, k, h);
-                newCD.revalidate();
-                newCD.repaint();
-                newCD.validate();
-                
-                newCD.updateUI();
+                paletPanel3.add(doPastButton("Hiperbola", zoom, a, b, k, h));
+                paletPanel3.revalidate();
+                mainMenu.refreshTab();
                 paletPane.add(newCD);
                 break;
             default:

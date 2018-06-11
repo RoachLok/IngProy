@@ -100,8 +100,8 @@ abstract class MainWin extends JPanel implements ActionListener {
         //Sets a splitter between leftPanel and outputScroller by adding them to a JSplitPanel.
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, outputPanel);
         splitPane.setOneTouchExpandable(true);
-        splitPane.setDividerLocation(300);
-        splitPane.setResizeWeight(0.30);
+        splitPane.setDividerLocation(330);
+        splitPane.setResizeWeight(0.3);
 
         //Provide minimum sizes for the two components in the split pane.
         Dimension minimumSize = new Dimension(100, 50);
