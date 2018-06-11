@@ -19,6 +19,7 @@ import ac.essex.graphing.plotting.ContinuousFunctionPlotter;
 */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -29,8 +30,10 @@ import javax.swing.event.ChangeListener;
 public class FxDrawer extends MainWin implements ActionListener{
     
     JSlider zoomSlider;
+    JPanel paletPane, paletPanel3;
     int zoom = 1;
     ConicDraw cd;
+    private final ArrayList<JButton> pastButtons = new ArrayList<>();
     
     public FxDrawer(int minWidth, int minLength) {
         super(minWidth, minLength);
@@ -72,11 +75,11 @@ public class FxDrawer extends MainWin implements ActionListener{
         }
         
         JLabel k = new JLabel ("k:");
-        this.kIn = new JTextField (3);
+        this.kIn = new JTextField ("0", 3);
         inputsPanel.add(k); inputsPanel.add(kIn);
         
         JLabel h = new JLabel ("h:");
-        this.hIn = new JTextField (3);
+        this.hIn = new JTextField ("0", 3);
         inputsPanel.add(h); inputsPanel.add(hIn); 
        
         add(inputsPanel);
@@ -94,6 +97,24 @@ public class FxDrawer extends MainWin implements ActionListener{
         public int getHVal(){
             return  Integer.valueOf(hIn.getText());
         }
+
+        public void setaIn(String integer) {
+            this.aIn = new JTextField (integer, 3);
+        }
+
+        public void setbIn(String integer) {
+            this.bIn = new JTextField (integer, 3);
+        }
+
+        public void setkIn(String integer) {
+            this.kIn = new JTextField (integer, 3);
+        }
+
+        public void sethIn(String integer) {
+            this.hIn = new JTextField (integer, 3);
+        }
+        
+        
     }
     InputsPanel ip, ip2, ip3;
     @Override
@@ -215,7 +236,7 @@ public class FxDrawer extends MainWin implements ActionListener{
     
     @Override
     JComponent output() {
-        JPanel paletPane = new JPanel ();
+        paletPane = new JPanel ();
         
         paletPane.setLayout(new BorderLayout());
         
@@ -237,13 +258,17 @@ public class FxDrawer extends MainWin implements ActionListener{
 
     @Override
     JComponent pastOutput() {
-        JPanel paletPanel = new JPanel ();
-        
-        return paletPanel;
+        paletPanel3 = new JPanel ();
+       /* for (int i = 0; i < pastButtons.size(); i++) {
+            paletPanel3.add(pastButtons.get(i));
+        }*/
+        return paletPanel3;
     }
     
     @Override
     public void actionPerformed (ActionEvent e){
+        ConicDraw newCD;
+        JButton newJB;
         switch (e.getActionCommand()) {
             case "1":
                 a = ip.getAVal();
@@ -251,13 +276,26 @@ public class FxDrawer extends MainWin implements ActionListener{
                 k = ip.getKVal();
                 h = ip.getHVal();
                 choice = 1;
+                newCD = new ConicDraw (zoom, choice, a, b, k, h);
+                newCD.revalidate();
+                newCD.repaint();
+                newCD.validate();
+                newCD.updateUI();
+              
+                paletPane.add(newCD);
                 break;
             case "2":
                 a = ip2.getAVal();
-                b = ip2.getBVal();
                 k = ip2.getKVal();
                 h = ip2.getHVal();
                 choice = 2;
+                newCD = new ConicDraw (zoom, choice, a, b, k, h);
+                newCD.revalidate();
+                newCD.repaint();
+                newCD.validate();
+                
+                newCD.updateUI();
+                paletPane.add(newCD);
                 break;
             case "3":
                 a = ip3.getAVal();
@@ -265,6 +303,13 @@ public class FxDrawer extends MainWin implements ActionListener{
                 k = ip3.getKVal();
                 h = ip3.getHVal();
                 choice = 3;
+                newCD = new ConicDraw (zoom, choice, a, b, k, h);
+                newCD.revalidate();
+                newCD.repaint();
+                newCD.validate();
+                
+                newCD.updateUI();
+                paletPane.add(newCD);
                 break;
             default:
                 a = 50;

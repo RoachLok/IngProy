@@ -138,7 +138,7 @@ abstract class MainWin extends JPanel implements ActionListener {
     abstract JComponent input();
     // Top-Left Panel.
 
-    abstract JComponent output();
+    abstract  JComponent output();
     // Right Panel.
 
     abstract JComponent pastOutput();

@@ -33,6 +33,10 @@ public class ConicDraw extends JComponent{
         this.he = he;
     }
     
+    public Graphics getGraphic (Graphics g){
+        return g;
+    }
+    
     public void paintComponent(Graphics g){
         w = this.getWidth() / 2;
         h = this.getHeight() / 2;
@@ -78,11 +82,11 @@ public class ConicDraw extends JComponent{
             case 3:
                 QuadCurve2D q = new QuadCurve2D.Float();
                 // draw QuadCurve2D.Float with set coordinates
-                q.setCurve(0, h, w, h, w, 0);
+                q.setCurve(0, h, w*0.9, h*0.9, w, 0);
                 g2.draw(q);
                 QuadCurve2D q2 = new QuadCurve2D.Float();
                 // draw QuadCurve2D.Float with set coordinates
-                q2.setCurve(w, 0, 0, 0, 0, h);
+                q2.setCurve(w*2, h, w, h, w, h*2);
                 g2.draw(q2);
                 break;
         } 
