@@ -51,15 +51,7 @@ public class ConicDraw extends JComponent{
          Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(1));
         g2.setColor(Color.red);
-        
-        //Convertir Double a Integer
-        
-        /*for (int x = -w; x <= w; x++) {
-            double eqValue = Math.sqrt(1*2^2-(x^2/2^2));
-            int integer = (int) eqValue;
-            integer = integer * 10;
-            p.addPoint(w + x*zoom, h - (1*2^2-(x^2/2^2))^(1/2));
-        }*/
+     
         switch (choice){
             case 1:
                 double centerW = (b*zoom/2);
@@ -74,23 +66,25 @@ public class ConicDraw extends JComponent{
                 
                 Polygon p = new Polygon();
                 for (int x = -w; x <= w; x++) {
-                    p.addPoint(w + x*zoom, h - ((x*x))*zoom);
+                    p.addPoint(w + x*zoom, h - ((x - he)*(x - he) + k)*zoom);
                 }
                 g2.drawPolyline(p.xpoints, p.ypoints, p.npoints);       
                 
                 break;
             case 3:
+                
                 QuadCurve2D q = new QuadCurve2D.Float();
                 // draw QuadCurve2D.Float with set coordinates
-                q.setCurve(0, h, w*0.9, h*0.9, w, 0);
+                q.setCurve(0, h, w*(a/10), h*(b/10), w, 0);
                 g2.draw(q);
                 QuadCurve2D q2 = new QuadCurve2D.Float();
                 // draw QuadCurve2D.Float with set coordinates
-                q2.setCurve(w*2, h, w, h, w, h*2);
+                q2.setCurve(w*2, h, w*(b/10), h*(a/10), w, h*2);
                 g2.draw(q2);
+               
                 break;
         } 
-        
+     
     }
     
     //((((x^2)+(he^2)-(2*x*he))-1)*b)-(k^2)+2*k
