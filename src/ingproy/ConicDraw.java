@@ -24,7 +24,8 @@ public class ConicDraw extends JComponent{
     int zoom, choice, a, b, k, he;
   
     public ConicDraw (int zoom, int choice, int a, int b, int he, int k){
-        this.zoom = zoom;
+        if (zoom == 0) zoom = 1;
+        this.zoom = zoom;        
         this.choice = choice;
         this.a = a;
         this.b = b;
