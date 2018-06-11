@@ -219,7 +219,7 @@ public class FxDrawer extends MainWin implements ActionListener{
         
         paletPane.setLayout(new BorderLayout());
         
-            cd = new ConicDraw (10, 1, a, b, k, h);
+            cd = new ConicDraw (10, 2, a, b, k, h);
             paletPane.add(cd);
             zoomSlider = new JSlider(JSlider.HORIZONTAL, -100, 100, 1);
                 
