@@ -69,35 +69,30 @@ public class GrowthRepresenter extends MainWin {
         JButton continuar = new JButton("Continuar");
         paletPanel.add(continuar, BorderLayout.WEST);
         continuar.addActionListener(new ActionListener() {
-             public void pulsado(){
-                 
-             }
-   
+
             @Override
             public void actionPerformed(ActionEvent e) {
-              //  k = Double.valueOf(limiteTexField.getText());
-              //  poblInicial = Double.valueOf(inicialTexField.getText());
-             //   tasaNat = Double.valueOf(natalidadTexField.getText());
-            //   generaciones = Double.valueOf(generacionesTexField.getText());
-      
-            // Aquí está accesible unaVariable
-          
-              //output().setVisible(true);
-   
-           primeraIteracion(poblInicial, tasaNat);
-           segundaIteracion(k, poblInicial);
-         
+                k = Double.valueOf(limiteTexField.getText());
+                poblInicial = Double.valueOf(inicialTexField.getText());
+                tasaNat = Double.valueOf(natalidadTexField.getText());
+                generaciones = Double.valueOf(generacionesTexField.getText());
+
+                PopulationDataHold pdh = new PopulationDataHold(k, poblInicial, tasaNat, generaciones);
+                System.out.println("la primera iteracion es : "+ primeraIteracion(poblInicial, tasaNat));
+                System.out.println("la segunda Iteracion es :" +segundaIteracion( k, poblInicial));
+                System.out.println("la poblacion final es :" + poblacionFinal(generaciones, generaciones));
                 
-                // pastOutput().setVisible(true);
-// continuar.addInputMethodListener(primeraIteracion(poblInicial, tasaNat));
+                
+                
+            
+                
+
             }
 
-           
         });
-        
-        
+
         Dimension minimumSize = new Dimension(100, 50);
-     
+
         limiteTexField.setMinimumSize(minimumSize);//tamaño minimo para no espachurrar
 
         JLabel k = new JLabel("Limite popablación (k)");
@@ -105,8 +100,7 @@ public class GrowthRepresenter extends MainWin {
         JLabel tasaNat = new JLabel("Tasa natalidad ");
         JLabel generaciones = new JLabel("Generaciones");
 
-        
-      //  continuar.addInputMethodListener(l);
+        // continuar.addInputMethodListener(l);
         limiteTexField.setMinimumSize(minimumSize);
 
         k.setLabelFor(limiteTexField);
@@ -128,8 +122,24 @@ public class GrowthRepresenter extends MainWin {
         //Adds it to the paletPanel.
         paletPanel.add(blankSpace);
         paletPanel.add(inputSection);
- 
+
         return paletPanel;
+    }
+
+    public void addLabels() {
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+     //   k = Double.valueOf(limiteTexField.getText());
+     //   poblInicial = Double.valueOf(inicialTexField.getText());
+     //   tasaNat = Double.valueOf(natalidadTexField.getText());
+      //generaciones = Double.valueOf(generacionesTexField.getText());
+
+        PopulationDataHold pdh = new PopulationDataHold(k, poblInicial, tasaNat, generaciones);
+        System.out.println(k + poblInicial + tasaNat + generaciones);
+
     }
 
     JComponent output() {
@@ -146,16 +156,13 @@ public class GrowthRepresenter extends MainWin {
         JPanel inputSection = new JPanel();
         inputSection.setLayout(new FlowLayout(3));
 
-       
-
-        JLabel taxi = new JLabel("primeraIteracion : " + primeraIteracion(poblInicial, tasaNat));
+        JLabel jl = new JLabel("JLabel taxi = newprimeraIteracion : " + primeraIteracion(poblInicial, tasaNat));
         JLabel segundaIteracionn = new JLabel(" segundaIteracion: " + segundaIteracion(k, poblInicial));
-       // JLabel poblacionFinall = new JLabel(" poblacionFinal " + poblacionFinal(primeraIteracion, segundaIteracion));
+        //JLabel poblacionFinall = new JLabel(" poblacionFinal " + poblacionFinal(primeraIteracion, segundaIteracion));
 
-        
-        inputSection.add(taxi);
+        //inputSection.add(taxi);
         inputSection.add(segundaIteracionn);
-       // inputSection.add(poblacionFinall);
+        // inputSection.add(poblacionFinall);
 
         paletPanel.add(blankSpace);
         paletPanel.add(inputSection);
@@ -188,7 +195,5 @@ public class GrowthRepresenter extends MainWin {
 
         return paletPanel;
     }
-
-    
 
 }
