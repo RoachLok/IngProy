@@ -41,7 +41,7 @@ public class FxDrawer extends MainWin implements ActionListener{
         super(minWidth, minLength, scroller);
     }
     
-    int a, b, k, h, choice; 
+    int a = 50, b = 50, k = 0, h = 0, choice = 1; 
     
     
     /**
@@ -62,12 +62,12 @@ public class FxDrawer extends MainWin implements ActionListener{
         public InputsPanel(boolean parabola){
         JPanel inputsPanel = new JPanel ();
         JLabel a = new JLabel ("a:");
-        this.aIn = new JTextField (3);
+        this.aIn = new JTextField ("50", 3);
         inputsPanel.add(a); inputsPanel.add(aIn);
         
         if (parabola == false){
         JLabel b = new JLabel ("b:");
-        this.bIn = new JTextField (3);
+        this.bIn = new JTextField ("50", 3);
         inputsPanel.add(b); inputsPanel.add(bIn);
         }
         
@@ -219,10 +219,9 @@ public class FxDrawer extends MainWin implements ActionListener{
         
         paletPane.setLayout(new BorderLayout());
         
-            cd = new ConicDraw (zoom, choice, a, b, k, h);
+            cd = new ConicDraw (10, 1, a, b, k, h);
             paletPane.add(cd);
-            
-            zoomSlider = new JSlider(JSlider.HORIZONTAL, -100, 100, 10);
+            zoomSlider = new JSlider(JSlider.HORIZONTAL, -100, 100, 1);
                 
             
             paletPane.add(zoomSlider, BorderLayout.SOUTH);     
@@ -268,6 +267,8 @@ public class FxDrawer extends MainWin implements ActionListener{
                 choice = 3;
                 break;
             default:
+                a = 50;
+                b = 50;
                 break;
         }
     }
