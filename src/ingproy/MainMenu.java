@@ -24,36 +24,45 @@ public class MainMenu extends JFrame implements ActionListener {
     private ImageIcon eqButton = createImageIcon("icons/bigIcons/eq2.png");
     private ImageIcon fxButton = createImageIcon("icons/bigIcons/gr2.png");
     private ImageIcon grwButton = createImageIcon("icons/bigIcons/grow2.png");
-    private JButton boton1 = new JButton("Resolución Ecuaciones", eqButton);
-    private JButton boton2 = new JButton("Ecuaciones Cónicas", fxButton);
-    private JButton boton3 = new JButton("Crecimiento Población", grwButton);
+    private JButton boton1 = new JButton("", eqButton);
+    private JButton boton2 = new JButton("", fxButton);
+    private JButton boton3 = new JButton("", grwButton);
     
     private ImageIcon growthIcon = createImageIcon("icons/poblacion.png");
     private ImageIcon eqSolverIcon = createImageIcon("icons/ecuaciones.png");
     private ImageIcon fxDrawIcon = createImageIcon("icons/conicas.png");
+    
+    private ImageIcon frameIcon = createImageIcon("icons/triple.png");
     
     private ImageIcon sumTab = createImageIcon("icons/suma4.png");
     private ImageIcon blankTab = createImageIcon("icons/blank.png");
 
     public MainMenu() {
 
+        setIconImage(frameIcon.getImage());
         setSize(1100, 700);
         setLocationRelativeTo(null);
         setTitle("Proyecto");
         add(tabbedPane);
 
-        selectPanel.add(boton1, BorderLayout.WEST);
+        selectPanel.setLayout(new BorderLayout());
+        
+        boton1.setPreferredSize(new Dimension((getWidth()/3)-5,getHeight()));
+        selectPanel.add(boton1, BorderLayout.LINE_START);
         boton1.addActionListener(this);
         boton1.setActionCommand("1");
 
+        boton2.setPreferredSize(new Dimension(getWidth()/3, getHeight()));
         selectPanel.add(boton2, BorderLayout.CENTER);
         boton2.addActionListener(this);
         boton2.setActionCommand("2");
 
-        selectPanel.add(boton3, BorderLayout.EAST);
+        boton3.setPreferredSize(new Dimension((getWidth()/3)-5,getHeight()));
+        selectPanel.add(boton3, BorderLayout.LINE_END);
         boton3.addActionListener(this);
         boton3.setActionCommand("3");
         
+        tabbedPane.setFocusable(false);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         
         tabbedPane.addTab("Nueva Pestaña", blankTab, selectPanel, "Nueva pestaña");
@@ -67,7 +76,7 @@ public class MainMenu extends JFrame implements ActionListener {
         
     }
     
-     void addBlankTab (){
+    public void addBlankTab (){
         ImageIcon blankTab = createImageIcon("icons/blank.png");
         tabbedPane.insertTab("Nueva Pestaña", blankTab, selectPanel, "Nueva pestaña",tabbedPane.getTabCount()-1);
         ButtonTabComponent tabComponent = new ButtonTabComponent(tabbedPane, blankTab);
