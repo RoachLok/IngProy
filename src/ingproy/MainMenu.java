@@ -74,6 +74,12 @@ public class MainMenu extends JFrame implements ActionListener {
         tabbedPane.setTabComponentAt(tabbedPane.getTabCount()-1, addTabComp);  
         
     }
+    public void refreshTab(){
+        tabbedPane.setSelectedIndex(tabbedPane.getSelectedIndex());
+        tabbedPane.updateUI();
+        tabbedPane.repaint();
+        tabbedPane.revalidate();
+    }
     
     public void addBlankTab (){
         ImageIcon blankTab = createImageIcon("icons/blank.png");
@@ -114,7 +120,7 @@ public class MainMenu extends JFrame implements ActionListener {
         } else if (e.getActionCommand().equals("2")) {
             add(tabbedPane);
             setVisible(true);
-            FxDrawer FxDrawer = new FxDrawer(1000, 600, false);
+            FxDrawer FxDrawer = new FxDrawer(1000, 600, false, this);
             tabbedPane.remove(deducedIndex);
             tabbedPane.insertTab("FxDrawer", fxDrawIcon, FxDrawer, "Representador de cónicas", tabbedPane.getTabCount()-1);
             tabbedPane.setMnemonicAt(deducedIndex, KeyEvent.VK_2);
